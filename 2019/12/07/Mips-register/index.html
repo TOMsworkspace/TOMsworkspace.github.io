@@ -135,10 +135,10 @@ function activateLightMode(){
 </tr>
 </tbody></table>
 <h3 id="二-详细说明"><a href="#二-详细说明" class="headerlink" title="二. 详细说明"></a>二. 详细说明</h3><p>&emsp;<strong>$0</strong>: 即$zero,该寄存器总是返回零，为0这个有用常数提供了一个简洁的编码形式。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">move $t0,$t1</span><br></pre></td></tr></table></figure>
+<figure class="highlight mips"><table><tr><td class="code"><pre><span class="line"><span class="keyword">move </span>$<span class="built_in">t0</span>,$<span class="built_in">t1</span></span><br></pre></td></tr></table></figure>
 
 <p>实际为</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">add $t0,$0,$t1</span><br></pre></td></tr></table></figure>
+<figure class="highlight mips"><table><tr><td class="code"><pre><span class="line"><span class="keyword">add </span>$<span class="built_in">t0</span>,$<span class="number">0</span>,$<span class="built_in">t1</span></span><br></pre></td></tr></table></figure>
 
 <p>使用伪指令可以简化任务，汇编程序提供了比硬件更丰富的指令集。</p>
 <p>&emsp;<strong>$1</strong>: 即$at，该寄存器为汇编保留，由于I型指令的立即数字段只有16位，在加载大常数时，编译器或汇编程序需要把大常数拆开，然后重新组合到寄存器里。比如加载一个32位立即数需要 lui（装入高位立即数）和addi两条指令。像MIPS程序拆散和重装大常数由汇编程序来完成，汇编程序必需一个临时寄存器来重组大常数，这也是为汇编 保留$at的原因之一。</p>
