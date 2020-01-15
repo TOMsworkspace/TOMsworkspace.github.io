@@ -2,30 +2,72 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://tomsworkspace.github.io/2019/12/07/%25E4%25B8%25AD%25E5%259B%25BD%25E6%2599%25BA%25E8%2583%25BD%25E7%25A1%25AC%25E4%25BB%25B6%25E8%25B0%2583%25E7%25A0%2594%25E6%258A%25A5%25E5%2591%258A/</loc>
+    <loc>https://tomsworkspace.github.io/2019/11/17/CPU-Cache/</loc>
     
-    <lastmod>2020-01-15T08:00:40.859Z</lastmod>
+    <lastmod>2020-01-15T08:19:55.334Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://tomsworkspace.github.io/2020/01/02/%25E5%25A6%2582%25E4%25BD%2595%25E5%259C%25A8%25E4%25BB%25A3%25E7%25A0%2581%25E4%25B8%25AD%25E8%25AE%25A1%25E7%25AE%2597%25E6%2597%25B6%25E9%2592%259F%25E5%2591%25A8%25E6%259C%259F%25E6%2595%25B0/</loc>
+    <loc>https://tomsworkspace.github.io/2019/11/21/DLL-lose/</loc>
     
-    <lastmod>2020-01-05T14:20:39.443Z</lastmod>
+    <lastmod>2020-01-15T08:18:14.247Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://tomsworkspace.github.io/2019/12/07/GPU%25E7%259A%2584%25E5%25BA%2594%25E7%2594%25A8%25E4%25B8%258E%25E5%258F%2591%25E5%25B1%2595/</loc>
+    
+    <lastmod>2020-01-15T08:17:26.747Z</lastmod>
     
   </url>
   
   <url>
     <loc>https://tomsworkspace.github.io/2020/01/02/Huffman%25E7%25AE%2597%25E6%25B3%2595%25E5%25AE%259E%25E7%258E%25B0%25E6%2596%2587%25E4%25BB%25B6%25E5%258E%258B%25E7%25BC%25A9%25E8%25A7%25A3%25E5%258E%258B/</loc>
     
-    <lastmod>2020-01-02T12:46:39.709Z</lastmod>
+    <lastmod>2020-01-15T08:16:44.786Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://tomsworkspace.github.io/2019/11/26/Linux-Arm-page-table/</loc>
+    
+    <lastmod>2020-01-15T08:16:06.221Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://tomsworkspace.github.io/2019/12/07/Mips-register/</loc>
+    
+    <lastmod>2020-01-15T08:15:03.690Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://tomsworkspace.github.io/2019/11/13/%25E6%2590%25AD%25E5%25BB%25BA%25E4%25B8%25AA%25E4%25BA%25BA%25E5%258D%259A%25E5%25AE%25A2/</loc>
+    
+    <lastmod>2020-01-15T08:14:11.511Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://tomsworkspace.github.io/2020/01/02/%25E5%25A6%2582%25E4%25BD%2595%25E5%259C%25A8%25E4%25BB%25A3%25E7%25A0%2581%25E4%25B8%25AD%25E8%25AE%25A1%25E7%25AE%2597%25E6%2597%25B6%25E9%2592%259F%25E5%2591%25A8%25E6%259C%259F%25E6%2595%25B0/</loc>
+    
+    <lastmod>2020-01-15T08:13:03.969Z</lastmod>
     
   </url>
   
   <url>
     <loc>https://tomsworkspace.github.io/2019/12/22/%25E4%25BF%25AE%25E6%2594%25B9Windows%25E7%25B3%25BB%25E7%25BB%259F%25E6%25B3%25A8%25E5%2586%258C%25E8%25A1%25A8%25E5%25B9%25B6%25E4%25BD%25BF%25E5%2585%25B6%25E7%25AB%258B%25E5%258D%25B3%25E7%2594%259F%25E6%2595%2588/</loc>
     
-    <lastmod>2019-12-22T10:00:43.092Z</lastmod>
+    <lastmod>2020-01-15T08:11:39.965Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://tomsworkspace.github.io/2019/12/07/%25E4%25B8%25AD%25E5%259B%25BD%25E6%2599%25BA%25E8%2583%25BD%25E7%25A1%25AC%25E4%25BB%25B6%25E8%25B0%2583%25E7%25A0%2594%25E6%258A%25A5%25E5%2591%258A/</loc>
+    
+    <lastmod>2020-01-15T08:00:40.859Z</lastmod>
     
   </url>
   
@@ -40,48 +82,6 @@
     <loc>https://tomsworkspace.github.io/2019/12/22/%25E9%2580%259A%25E8%25BF%2587%25E4%25BF%25AE%25E6%2594%25B9%25E6%25B3%25A8%25E5%2586%258C%25E8%25A1%25A8%25E6%259D%25A5%25E6%259B%25B4%25E6%2594%25B9IE%25E4%25BB%25A3%25E7%2590%2586/</loc>
     
     <lastmod>2019-12-22T09:46:38.847Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://tomsworkspace.github.io/2019/12/07/Mips-register/</loc>
-    
-    <lastmod>2019-12-07T08:11:54.555Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://tomsworkspace.github.io/2019/12/07/GPU%25E7%259A%2584%25E5%25BA%2594%25E7%2594%25A8%25E4%25B8%258E%25E5%258F%2591%25E5%25B1%2595/</loc>
-    
-    <lastmod>2019-12-07T08:05:13.212Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://tomsworkspace.github.io/2019/11/21/DLL-lose/</loc>
-    
-    <lastmod>2019-12-07T07:12:11.131Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://tomsworkspace.github.io/2019/11/26/Linux-Arm-page-table/</loc>
-    
-    <lastmod>2019-11-26T09:25:54.662Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://tomsworkspace.github.io/2019/11/17/CPU-Cache/</loc>
-    
-    <lastmod>2019-11-17T13:59:13.116Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://tomsworkspace.github.io/2019/11/13/%25E6%2590%25AD%25E5%25BB%25BA%25E4%25B8%25AA%25E4%25BA%25BA%25E5%258D%259A%25E5%25AE%25A2/</loc>
-    
-    <lastmod>2019-11-15T09:05:42.430Z</lastmod>
     
   </url>
   
