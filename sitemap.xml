@@ -2,6 +2,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://tomsworkspace.github.io/2019/12/07/Mips-register/</loc>
+    
+    <lastmod>2020-01-15T09:39:28.361Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://tomsworkspace.github.io/2019/11/13/%25E6%2590%25AD%25E5%25BB%25BA%25E4%25B8%25AA%25E4%25BA%25BA%25E5%258D%259A%25E5%25AE%25A2/</loc>
+    
+    <lastmod>2020-01-15T09:38:40.643Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://tomsworkspace.github.io/2019/11/17/CPU-Cache/</loc>
     
     <lastmod>2020-01-15T09:34:55.290Z</lastmod>
@@ -33,20 +47,6 @@
     <loc>https://tomsworkspace.github.io/2019/11/26/Linux-Arm-page-table/</loc>
     
     <lastmod>2020-01-15T09:30:26.785Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://tomsworkspace.github.io/2019/12/07/Mips-register/</loc>
-    
-    <lastmod>2020-01-15T09:28:56.450Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://tomsworkspace.github.io/2019/11/13/%25E6%2590%25AD%25E5%25BB%25BA%25E4%25B8%25AA%25E4%25BA%25BA%25E5%258D%259A%25E5%25AE%25A2/</loc>
-    
-    <lastmod>2020-01-15T09:28:30.161Z</lastmod>
     
   </url>
   
