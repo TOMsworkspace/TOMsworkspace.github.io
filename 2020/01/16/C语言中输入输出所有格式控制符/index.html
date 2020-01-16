@@ -207,22 +207,10 @@ function activateLightMode(){
 <h3 id="精度-prec"><a href="#精度-prec" class="headerlink" title="精度.prec"></a>精度.prec</h3><p>&emsp;用于控制小数点后面的位数，取值和含义如下：</p>
 <p>&emsp;无按缺省精度显示0<br>&emsp;当type=d,i,o,u,x时，没有影响；<br>&emsp;type=e,E,f时，不显示小数点<br>&emsp;n(n=1,2,3…)<br>&emsp;当type=e,E,f时表示的最大小数位数；<br>&emsp;type=其他，表示显示的最大宽度<br>&emsp;prec是指可选的精度。精度是一个.(点)后跟十进制数字字符串。如果没有给出精度，按 0（零）对待。精度指定：</p>
 <ul>
-<li><ul>
-<li>d、o、i、 u、x 或 X 转换的最少数字显示位数。</li>
-</ul>
-</li>
-<li><ul>
-<li>e 和 f 转换的基数字符后的最少数字显示位数。</li>
-</ul>
-</li>
-<li><ul>
-<li>g 转换的最大有效数字位数。</li>
-</ul>
-</li>
-<li><ul>
-<li>s 转换中字符串的最大打印字节数目。</li>
-</ul>
-</li>
+<li>* d、o、i、 u、x 或 X 转换的最少数字显示位数。</li>
+<li>* e 和 f 转换的基数字符后的最少数字显示位数。</li>
+<li>* g 转换的最大有效数字位数。</li>
+<li>* s 转换中字符串的最大打印字节数目。</li>
 </ul>
 <h3 id="类型长度length"><a href="#类型长度length" class="headerlink" title="类型长度length"></a>类型长度length</h3><p>&emsp;类型长度指明待输出数据的长度。因为相同类型可以有不同的长度，比如整型有16bits的short int，32bits的int，也有64bits的long int，浮点型有32bits的单精度float和64bits的双精度double。为了指明同一类型的不同长度，类型长度（length）应运而生，成为格式控制字符串的一部分。</p>
 <table>
@@ -283,7 +271,7 @@ function activateLightMode(){
 <tr>
 <td align="center">\”</td>
 <td align="left">双引号</td>
-<td align="center">\</td>
+<td align="center">\\</td>
 <td align="left">反斜杠</td>
 </tr>
 <tr>

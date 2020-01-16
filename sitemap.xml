@@ -2,9 +2,30 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://tomsworkspace.github.io/2019/12/22/http-https%25E4%25BB%25A3%25E7%2590%2586%25E6%259C%258D%25E5%258A%25A1%25E5%2599%25A8%25E7%259A%2584%25E4%25BB%25A3%25E7%25A0%2581%25E5%25AE%259E%25E7%258E%25B0/</loc>
+    
+    <lastmod>2020-01-16T10:35:14.938Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://tomsworkspace.github.io/2020/01/02/Huffman%25E7%25AE%2597%25E6%25B3%2595%25E5%25AE%259E%25E7%258E%25B0%25E6%2596%2587%25E4%25BB%25B6%25E5%258E%258B%25E7%25BC%25A9%25E8%25A7%25A3%25E5%258E%258B/</loc>
+    
+    <lastmod>2020-01-16T10:30:31.711Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://tomsworkspace.github.io/2020/01/02/%25E5%25A6%2582%25E4%25BD%2595%25E5%259C%25A8%25E4%25BB%25A3%25E7%25A0%2581%25E4%25B8%25AD%25E8%25AE%25A1%25E7%25AE%2597%25E6%2597%25B6%25E9%2592%259F%25E5%2591%25A8%25E6%259C%259F%25E6%2595%25B0/</loc>
+    
+    <lastmod>2020-01-16T10:30:13.045Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://tomsworkspace.github.io/2020/01/16/C%25E8%25AF%25AD%25E8%25A8%2580%25E4%25B8%25AD%25E8%25BE%2593%25E5%2585%25A5%25E8%25BE%2593%25E5%2587%25BA%25E6%2589%2580%25E6%259C%2589%25E6%25A0%25BC%25E5%25BC%258F%25E6%258E%25A7%25E5%2588%25B6%25E7%25AC%25A6/</loc>
     
-    <lastmod>2020-01-16T10:24:12.198Z</lastmod>
+    <lastmod>2020-01-16T10:28:54.417Z</lastmod>
     
   </url>
   
@@ -51,23 +72,9 @@
   </url>
   
   <url>
-    <loc>https://tomsworkspace.github.io/2020/01/02/Huffman%25E7%25AE%2597%25E6%25B3%2595%25E5%25AE%259E%25E7%258E%25B0%25E6%2596%2587%25E4%25BB%25B6%25E5%258E%258B%25E7%25BC%25A9%25E8%25A7%25A3%25E5%258E%258B/</loc>
-    
-    <lastmod>2020-01-15T09:30:53.991Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://tomsworkspace.github.io/2019/11/26/Linux-Arm-page-table/</loc>
     
     <lastmod>2020-01-15T09:30:26.785Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://tomsworkspace.github.io/2020/01/02/%25E5%25A6%2582%25E4%25BD%2595%25E5%259C%25A8%25E4%25BB%25A3%25E7%25A0%2581%25E4%25B8%25AD%25E8%25AE%25A1%25E7%25AE%2597%25E6%2597%25B6%25E9%2592%259F%25E5%2591%25A8%25E6%259C%259F%25E6%2595%25B0/</loc>
-    
-    <lastmod>2020-01-15T09:25:38.333Z</lastmod>
     
   </url>
   
@@ -82,13 +89,6 @@
     <loc>https://tomsworkspace.github.io/2019/12/07/%25E4%25B8%25AD%25E5%259B%25BD%25E6%2599%25BA%25E8%2583%25BD%25E7%25A1%25AC%25E4%25BB%25B6%25E8%25B0%2583%25E7%25A0%2594%25E6%258A%25A5%25E5%2591%258A/</loc>
     
     <lastmod>2020-01-15T09:20:15.815Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://tomsworkspace.github.io/2019/12/22/http-https%25E4%25BB%25A3%25E7%2590%2586%25E6%259C%258D%25E5%258A%25A1%25E5%2599%25A8%25E7%259A%2584%25E4%25BB%25A3%25E7%25A0%2581%25E5%25AE%259E%25E7%258E%25B0/</loc>
-    
-    <lastmod>2019-12-22T09:47:41.250Z</lastmod>
     
   </url>
   
