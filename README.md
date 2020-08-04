@@ -7,5 +7,5 @@ after install nodejs&hexo-cli&hexo
 
 use
 ```bash
-# git clone  -b hexo github.com:TOMsworkspace/TOMsworkspace.github.io.git
+# git clone  -b hexo https://github.com/TOMsworkspace/TOMsworkspace.github.io.git
 ```
