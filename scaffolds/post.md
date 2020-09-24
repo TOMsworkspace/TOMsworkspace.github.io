@@ -6,11 +6,11 @@ tags:
 categories: 
 keywords: 
 description: 
-top_img: https://cdn.jsdelivr.net/gh/TOMsworkspace/BlogHelper/
+top_img: https://cdn.jsdelivr.net/gh/TOMsworkspace/TOMsworkspace.github.io/
 #（除非特定需要，可以不寫）
 comments: true
 #是否顯示評論（除非設置false,可以不寫）
-cover: https://cdn.jsdelivr.net/gh/TOMsworkspace/BlogHelper/
+cover: https://cdn.jsdelivr.net/gh/TOMsworkspace/TOMsworkspace.github.io/
 #缩略图
 toc: true
 #是否显示toc 
