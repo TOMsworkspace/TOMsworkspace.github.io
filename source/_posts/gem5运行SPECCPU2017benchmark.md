@@ -1,8 +1,8 @@
 ---
 title: gem5运行SPECCPU2017benchmark
-top_img: 'https://cdn.jsdelivr.net/gh/TOMsworkspace/TOMsworkspace.github.io/2020/10/11/gem5运行SPECCPU2017benchmark/figure2.png'
+top_img: 'https://cdn.jsdelivr.net/gh/TOMsworkspace/TOMsworkspace.github.io/2020/10/11/gem5运行SPECCPU2017benchmark/1.png'
 comments: true
-cover: 'https://cdn.jsdelivr.net/gh/TOMsworkspace/TOMsworkspace.github.io/2020/10/11/gem5运行SPECCPU2017benchmark/figure1.png'
+cover: 'https://cdn.jsdelivr.net/gh/TOMsworkspace/TOMsworkspace.github.io/2020/10/11/gem5运行SPECCPU2017benchmark/figure2.png'
 toc: true
 toc_number: true
 copyright: true
