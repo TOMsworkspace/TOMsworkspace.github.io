@@ -1,0 +1,170 @@
+<!DOCTYPE html><html class="hide-aside" lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>C语言标准 | Tom's develop Blog</title><meta name="keywords" content="C 标准"><meta name="author" content="Tom"><meta name="copyright" content="Tom"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><meta name="description" content="C语言的标准发展">
+<meta property="og:type" content="article">
+<meta property="og:title" content="C语言标准">
+<meta property="og:url" content="https://tomsworkspace.github.io/2020/02/24/C%E8%AF%AD%E8%A8%80%E6%A0%87%E5%87%86/index.html">
+<meta property="og:site_name" content="Tom&#39;s develop Blog">
+<meta property="og:description" content="C语言的标准发展">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/TOMsworkspace/BlogHelper/C语言中输入输出所有格式控制符/figure1.jpg">
+<meta property="article:published_time" content="2020-02-24T14:25:27.000Z">
+<meta property="article:modified_time" content="2020-11-23T14:32:22.919Z">
+<meta property="article:author" content="Tom">
+<meta property="article:tag" content="C 标准">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/TOMsworkspace/BlogHelper/C语言中输入输出所有格式控制符/figure1.jpg"><link rel="shortcut icon" href="/img/favicon.ico"><link rel="canonical" href="https://tomsworkspace.github.io/2020/02/24/C%E8%AF%AD%E8%A8%80%E6%A0%87%E5%87%86/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//fonts.googleapis.com" crossorigin="crossorigin"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="preconnect" href="//zz.bdstatic.com"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-snackbar@0.1.15/dist/snackbar.min.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Titillium+Web"><script>var GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"简"},
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":false,"highlightLang":true},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  ClickShowText: {"text":"富强,民主,文明,和谐,自由,平等,公正,法治,爱国,敬业,诚信,友善","fontSize":"15px"},
+  lightbox: 'mediumZoom',
+  Snackbar: {"chs_to_cht":"你已切换为繁体","cht_to_chs":"你已切换为简体","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#49b1f5","bgDark":"#2d3035","position":"bottom-left"},
+  justifiedGallery: {
+    js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+    css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isanchor: false
+};
+
+var saveToLocal = {
+  set: function setWithExpiry(key, value, ttl) {
+    const now = new Date()
+    const expiryDay = ttl * 86400000
+    const item = {
+      value: value,
+      expiry: now.getTime() + expiryDay,
+    }
+    localStorage.setItem(key, JSON.stringify(item))
+  },
+
+  get: function getWithExpiry(key) {
+    const itemStr = localStorage.getItem(key)
+
+    if (!itemStr) {
+      return undefined
+    }
+    const item = JSON.parse(itemStr)
+    const now = new Date()
+
+    if (now.getTime() > item.expiry) {
+      localStorage.removeItem(key)
+      return undefined
+    }
+    return item.value
+  }
+}</script><script id="config_change">var GLOBAL_CONFIG_SITE = { 
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2020-11-23 22:32:22'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(function () {  window.activateDarkMode = function () {
+    document.documentElement.setAttribute('data-theme', 'dark')
+    if (document.querySelector('meta[name="theme-color"]') !== null) {
+      document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+    }
+  }
+  window.activateLightMode = function () {
+    document.documentElement.setAttribute('data-theme', 'light')
+   if (document.querySelector('meta[name="theme-color"]') !== null) {
+      document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+    }
+  }
+  const autoChangeMode = 'true'
+  const t = saveToLocal.get('theme')
+  if (autoChangeMode === '1') {
+    const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+    const isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
+    const isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
+    const hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+    if (t === undefined) {
+      if (isLightMode) activateLightMode()
+      else if (isDarkMode) activateDarkMode()
+      else if (isNotSpecified || hasNoSupport) {
+        const now = new Date()
+        const hour = now.getHours()
+        const isNight = hour <= 6 || hour >= 18
+        isNight ? activateDarkMode() : activateLightMode()
+      }
+      window.matchMedia('(prefers-color-scheme: dark)').addListener(function (e) {
+        if (saveToLocal.get('theme') === undefined) {
+          e.matches ? activateDarkMode() : activateLightMode()
+        }
+      })
+    } else if (t === 'light') activateLightMode()
+    else activateDarkMode()
+  } else if (autoChangeMode === '2') {
+    const now = new Date()
+    const hour = now.getHours()
+    const isNight = hour <= 6 || hour >= 18
+    if (t === undefined) isNight ? activateDarkMode() : activateLightMode()
+    else if (t === 'light') activateLightMode()
+    else activateDarkMode()
+  } else {
+    if (t === 'dark') activateDarkMode()
+    else if (t === 'light') activateLightMode()
+  }const asideStatus = saveToLocal.get('aside-status')
+if (asideStatus !== undefined) {
+   if (asideStatus === 'hide') {
+     document.documentElement.classList.add('hide-aside')
+   } else {
+     document.documentElement.classList.remove('hide-aside')
+   }
+}})()</script><meta name="generator" content="Hexo 5.2.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="author-avatar"><img class="avatar-img" data-lazy-src="/" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">文章</div><div class="length-num">27</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">标签</div><div class="length-num">56</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">分类</div><div class="length-num">10</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fa fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fa fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fa fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fa fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fa fa-heart"></i><span> About</span></a></div></div></div></div><div id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url(https://cdn.jsdelivr.net/gh/TOMsworkspace/BlogHelper/C语言中输入输出所有格式控制符/figure1.jpg)"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Tom's develop Blog</a></span><span id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fa fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fa fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fa fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fa fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fa fa-heart"></i><span> About</span></a></div></div><span class="close" id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></span></span></nav><div id="post-info"><h1 class="post-title">C语言标准</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2020-02-24T14:25:27.000Z" title="发表于 2020-02-24 22:25:27">2020-02-24</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2020-11-23T14:32:22.919Z" title="更新于 2020-11-23 22:32:22">2020-11-23</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/C/">C</a></span></div><div class="meta-secondline"> <span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">1k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>3分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="C语言标准发展"><a href="#C语言标准发展" class="headerlink" title="C语言标准发展"></a>C语言标准发展</h1><h2 id="C语言的起源"><a href="#C语言的起源" class="headerlink" title="C语言的起源"></a>C语言的起源</h2><p>&emsp;1972年，贝尔实验室的丹尼斯.里奇(Dennis Ritch)和肯.汤普逊(Ken Thompson)在开发UNIX操作系统时设计了C语言。然而C语言并不完全是里奇突发奇想而来，他是在B语言(汤普逊发明)的基础上进行设计。C语言设计的初衷是将其作为程序员使用的一种编程工具，因此，其主要目标是成为有用的语言。</p>
+<h2 id="C语言标准"><a href="#C语言标准" class="headerlink" title="C语言标准"></a>C语言标准</h2><p>&emsp;目前，有许多C实现可用。在理想情况下，编写C程序时，假设该程序中未使用机器特定的编程技术，那么它的运行情况在任何实现中都应该相同。要在实践中做到这一点，不同的实现要遵循一个标准。</p>
+<p>&emsp;C语言发展之初，并没有所谓的C标准。1987年，布莱恩.柯林汉(Brian Kernighan)和丹尼斯.里奇(Dennis Ritch)和著的<em>The Programming Language</em>(C语言程序设计)第一版是公认的C标准，通常称之为<em>K&amp;R C</em>或经典C。特别是，该书中的附录中的&quot;C语言参考手册&quot;已成为C的指导标准。虽然这本书的附录定义了C语言，但是并没有定义C库。与大多数语言不同的是，C语言比其他语言更依赖库，因此需要一个标准库。实际上，由于缺乏官方标准，UNIX实现提供的库已经成为了标准库。</p>
+<h3 id="第一个ANSI-ISO-C标准"><a href="#第一个ANSI-ISO-C标准" class="headerlink" title="第一个ANSI/ISO C标准"></a>第一个ANSI/ISO C标准</h3><p>&emsp;随着C的不断发展，越来越广泛地运用于更多的系统中，C社区意识到需要一个更全面，更新颖，更严格的标准。鉴于此，美国国家标准协会(ANSI)于1983年组建了一个委员会(X3J11)，开发了一套新标准，并于1989年正式公布。该标准(ANSI C)定义了C语言和C标准库。国际标准化组织于1990年采用了这套C标准(ISO C)。ISO C和ANSI C是完全相同过的标准。ANSI/ISO标准的最终版本通常叫做C89(ANSI 于1989年批准该标准)或C90(ISO于1990年批准该标准)。另外，由于ANSI先公布C标准，因此业界人士通常使用ANSI C。</p>
+<h3 id="C99标准"><a href="#C99标准" class="headerlink" title="C99标准"></a>C99标准</h3><p>&emsp;1994年，ANSI/ISO联合委员会(C9X委员会)开始修订C标准，最终发布了C99标准。该委员会遵循了最初C90的原则，包括保持语言的精炼简单。委员会的用意不是在C语言中添加新特性，而是为了达到新的目标。第一个目标是，支持国际化编程。例如提供多种方法处理国际字符集。第二个目标是，“调整现有实现致力于解决明显的缺陷”。因此，在遇到需要将C移至64位处理器时，委员会根据现实生活中处理问题的经验来添加标准。第三个目标是，为适应科学和工程项目中的关键数值计算，提高C的适应性，让C比FORTRAN更有竞争力。</p>
+<p>&emsp;C99的修订保留了C语言的精髓，C任是一门简洁高效的语言。虽然该标准已经发布了很长时间，但并非所有的编译器都完全实现C99的所有改动。</p>
+<h3 id="C11标准"><a href="#C11标准" class="headerlink" title="C11标准"></a>C11标准</h3><p>&emsp;标准委员会在2007年承诺C标准的下一个版本是C1X，2011年终于发布了C11标准。此次，委员会提出了一些新的指导原则。由于供应商并未像C90那样很好地接和支持C99，这使得C99中的一些特性成为C11的可选项。因为委员会认为，不应要求服务小型机市场的供应商支持其目标环境中用不到的特性。另外需要强调的是，修订标准的原因不是因为原本的标准不能用，而是需要跟进新的技术。例如，新标准添加了可选项支持当前使用多处理器的计算机。</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">Tom</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://tomsworkspace.github.io/2020/02/24/C%E8%AF%AD%E8%A8%80%E6%A0%87%E5%87%86/">https://tomsworkspace.github.io/2020/02/24/C%E8%AF%AD%E8%A8%80%E6%A0%87%E5%87%86/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://TOMsworkspace.github.io" target="_blank">Tom's develop Blog</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/C-%E6%A0%87%E5%87%86/">C 标准</a></div><div class="post_share"><div class="social-share" data-image="https://cdn.jsdelivr.net/gh/TOMsworkspace/BlogHelper/C语言中输入输出所有格式控制符/figure1.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/css/share.min.css"><script src="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/js/social-share.min.js" defer></script></div></div><div class="post-reward"><div class="reward-button"><i class="fas fa-qrcode"></i> 打赏<div class="reward-main"><ul class="reward-all"><li class="reward-item"><a href="/img/wp.jpg" target="_blank"><img class="post-qr-code-img" data-lazy-src="/img/wp.jpg" alt="微信"/></a><div class="post-qr-code-desc">微信</div></li><li class="reward-item"><a href="/img/ap.jpg" target="_blank"><img class="post-qr-code-img" data-lazy-src="/img/ap.jpg" alt="支付宝"/></a><div class="post-qr-code-desc">支付宝</div></li></ul></div></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2020/08/05/%E5%80%BC%E5%BE%97%E6%8E%A8%E8%8D%90%E7%9A%84C%E4%B8%8EC++%E6%A1%86%E6%9E%B6%E5%92%8C%E5%BA%93/"><img class="prev-cover" data-lazy-src="https://cdn.jsdelivr.net/gh/TOMsworkspace/BlogHelper/值得推荐的C与C++框架和库/figure1.jpeg" onerror="onerror=null;src='/img/404.jpg'"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">值得推荐的C与C++框架和库</div></div></a></div><div class="next-post pull-right"><a href="/2020/02/24/C%E4%B8%8EC++%E7%9A%84%E5%8C%BA%E5%88%AB/"><img class="next-cover" data-lazy-src="https://cdn.jsdelivr.net/gh/TOMsworkspace/BlogHelper/C语言中输入输出所有格式控制符/figure1.jpg" onerror="onerror=null;src='/img/404.jpg'"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">C与C++的区别</div></div></a></div></nav></div><div class="aside_content" id="aside_content"><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="card-content"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#C%E8%AF%AD%E8%A8%80%E6%A0%87%E5%87%86%E5%8F%91%E5%B1%95"><span class="toc-number">1.</span> <span class="toc-text">C语言标准发展</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#C%E8%AF%AD%E8%A8%80%E7%9A%84%E8%B5%B7%E6%BA%90"><span class="toc-number">1.1.</span> <span class="toc-text">C语言的起源</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#C%E8%AF%AD%E8%A8%80%E6%A0%87%E5%87%86"><span class="toc-number">1.2.</span> <span class="toc-text">C语言标准</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC%E4%B8%80%E4%B8%AAANSI-ISO-C%E6%A0%87%E5%87%86"><span class="toc-number">1.2.1.</span> <span class="toc-text">第一个ANSI&#x2F;ISO C标准</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#C99%E6%A0%87%E5%87%86"><span class="toc-number">1.2.2.</span> <span class="toc-text">C99标准</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#C11%E6%A0%87%E5%87%86"><span class="toc-number">1.2.3.</span> <span class="toc-text">C11标准</span></a></li></ol></li></ol></li></ol></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2019 - 2020 By Tom</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text">Hi, welcome to my <a href="https://TOMsworkspace.github.io/">blog</a>!</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">繁</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog"></i></button><button id="chat_btn" type="button" title="rightside.chat_btn"><i class="fas fa-sms"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.jsdelivr.net/npm/medium-zoom/dist/medium-zoom.min.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page@latest/instantpage.min.js" type="module" defer></script><script src="https://cdn.jsdelivr.net/npm/lazysizes@latest/lazysizes.min.js"></script><script src="https://cdn.jsdelivr.net/npm/node-snackbar@0.1.15/dist/snackbar.min.js"></script><div class="js-pjax"><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div><script src="/js/third-party/activate-power-mode.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = false;
+POWERMODE.mobile = false;
+document.body.addEventListener('input', POWERMODE);
+</script><script id="click-show-text" src="/js/third-party/ClickShowText.js" async="async" mobile="false"></script><script>(function(){
+  const bp = document.createElement('script');
+  const curProtocol = window.location.protocol.split(':')[0];
+  if (curProtocol === 'https'){
+  bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+  }
+  else{
+  bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+  }
+  bp.dataset.pjax = ''
+  const s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(bp, s);
+})()</script></div></body></html>
