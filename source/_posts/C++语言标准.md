@@ -11,9 +11,9 @@ updated:
 tags: 
             - C++
 categories: 
-            -C++标准
+            - C++标准
 keywords: 
-            -C++标准
+            - C++标准
 description: C++标准
 ---
 
@@ -26,7 +26,7 @@ description: C++标准
 &emsp;美国国家标准委员会(ANSI)在1990年成立委员会，后来国际化标准组织ISO也通过其委员会加入这个行列。他们组成ANSI/ISO组织，专门致力于制定C++标准。
 
 &emsp;现已发布和计划中的标准如下：
-![]<https://cdn.jsdelivr.net/gh/TOMsworkspace/TOMsworkspace.github.io//2020/11/23/C++语言标准/figure2.jpg>
+![](https://cdn.jsdelivr.net/gh/TOMsworkspace/TOMsworkspace.github.io//2020/11/23/C++语言标准/figure2.jpg)
 
 ### C++98/C++03标准
 
