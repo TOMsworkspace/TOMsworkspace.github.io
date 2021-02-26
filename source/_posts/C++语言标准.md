@@ -8,12 +8,9 @@ toc_number: true
 copyright: true
 date: 2020-11-23 19:48:29
 updated:
-tags: 
-            - C++
-categories: 
-            - C++标准
-keywords: 
-            - C++标准
+tags: C++
+categories: C++
+keywords: C++标准
 description: C++标准
 ---
 

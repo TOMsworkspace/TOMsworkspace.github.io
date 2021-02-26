@@ -12,8 +12,7 @@ tags:
             - C++
             - 多继承
             - 虚函数表结构
-categories: 
-            - C++
+categories: C++
 keywords:
             - C++
             - 多继承
