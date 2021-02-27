@@ -11,7 +11,7 @@ updated:
 tags: 
     - C++
     - Const
-categories: C++
+categories: C/C++
 keywords: 
     - C++
     - const

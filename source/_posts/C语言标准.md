@@ -5,7 +5,7 @@ copyright: true
 date: 2020-02-24 22:25:27
 updated:
 tags: C 标准
-categories: C
+categories: C/C++
 keywords: C 标准
 description: C语言的标准发展
 top_img: https://cdn.jsdelivr.net/gh/TOMsworkspace/BlogHelper/C语言中输入输出所有格式控制符/figure1.jpg

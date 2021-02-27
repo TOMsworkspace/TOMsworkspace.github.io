@@ -5,7 +5,7 @@ copyright: true
 date: 2020-02-24 20:31:05
 updated:
 tags: C 存储类别 作用域 链接 存储期
-categories: C
+categories: C/C++
 keywords: C 存储类别 作用域 链接 存储期
 description:  C语言数据存储类别
 top_img: https://cdn.jsdelivr.net/gh/TOMsworkspace/BlogHelper/C语言中输入输出所有格式控制符/figure1.jpg

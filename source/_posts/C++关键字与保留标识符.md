@@ -9,7 +9,7 @@ copyright: true
 date: 2020-11-25 15:15:19
 updated:
 tags: C 关键字 保留标识符
-categories: C++
+categories: C/C++
 keywords: C 关键字 保留标识符
 description: C++的关键字与保留标识符简介和总结
 ---

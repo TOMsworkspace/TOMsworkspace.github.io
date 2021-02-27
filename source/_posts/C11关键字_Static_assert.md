@@ -5,7 +5,7 @@ copyright: true
 date: 2020-02-24 20:31:58
 updated:
 tags: C11 关键字 _Static_assert
-categories: C
+categories: C/C++
 keywords: C11 关键字 _Static_assert
 description: C11关键字_Static_assert介绍
 top_img: https://cdn.jsdelivr.net/gh/TOMsworkspace/BlogHelper/C语言中输入输出所有格式控制符/figure1.jpg

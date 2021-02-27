@@ -8,7 +8,7 @@ updated:
 tags: 
     - C
     - C++
-categories: C++
+categories: C/C++
 keywords: 
     - C
     - C++

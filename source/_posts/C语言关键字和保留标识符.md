@@ -5,7 +5,7 @@ copyright: true
 date: 2020-02-24 20:30:39
 updated:
 tags: C 关键字 保留标识符 
-categories: C
+categories: C/C++
 keywords: C 关键字 保留标识符
 description: C语言中所有的关键字和保留标识符
 top_img: https://cdn.jsdelivr.net/gh/TOMsworkspace/BlogHelper/C语言中输入输出所有格式控制符/figure1.jpg

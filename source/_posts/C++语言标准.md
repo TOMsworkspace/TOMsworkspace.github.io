@@ -9,7 +9,7 @@ copyright: true
 date: 2020-11-23 19:48:29
 updated:
 tags: C++
-categories: C++
+categories: C/C++
 keywords: C++标准
 description: C++标准
 ---

@@ -5,7 +5,7 @@ copyright: true
 date: 2020-01-16 17:02:06
 updated:
 tags: printf scanf 输入输出 C语言 格式控制
-categories: C
+categories: C/C++
 keywords: printf scanf 输入输出 C语言 格式控制
 description: C语言输入输出的所有格式控制详解
 top_img: https://cdn.jsdelivr.net/gh/TOMsworkspace/BlogHelper@1.0/C语言中输入输出所有格式控制符/figure1.jpg

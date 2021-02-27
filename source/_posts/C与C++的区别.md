@@ -5,7 +5,7 @@ copyright: true
 date: 2020-02-24 20:32:16
 updated:
 tags: C C++ 区别
-categories: C
+categories: C/C++
 keywords: C C++ 区别
 description: C与C++的区别
 top_img: https://cdn.jsdelivr.net/gh/TOMsworkspace/BlogHelper/C语言中输入输出所有格式控制符/figure1.jpg

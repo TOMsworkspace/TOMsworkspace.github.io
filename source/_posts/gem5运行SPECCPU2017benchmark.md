@@ -12,8 +12,7 @@ tags:
         - GEM5
         - CPU2017
 categories: 
-        - GEM5
-        - SPECCPU
+        - gem5
 keywords: 
         - gem5
         - GEM5

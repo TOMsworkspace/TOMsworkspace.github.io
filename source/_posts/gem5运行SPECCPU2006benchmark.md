@@ -12,8 +12,7 @@ tags:
     - GEM5
     - CCPU2006
 categories: 
-    - GEM5
-    - SPECCPU
+    - gem5
 keywords:
     - gem5
     - GEM5

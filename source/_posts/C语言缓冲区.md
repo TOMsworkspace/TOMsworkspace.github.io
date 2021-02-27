@@ -5,7 +5,7 @@ copyright: true
 date: 2020-02-24 20:30:53
 updated:
 tags: C 缓冲区
-categories: C
+categories: C/C++
 keywords: C 缓冲区
 description: C 缓冲区 完全缓冲 行缓冲
 top_img: https://cdn.jsdelivr.net/gh/TOMsworkspace/BlogHelper/C语言中输入输出所有格式控制符/figure1.jpg
