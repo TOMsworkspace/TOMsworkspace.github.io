@@ -10,10 +10,10 @@ date: 2021-02-27 18:57:00
 updated:
 tags: 
 - GCC
-- bulitin函数 
+- builtin函数 
 categories: GCC
 keywords: GCC 内建函数
-description: 一些GCC自带的内建(bulitin)函数的接口及实现
+description: 一些GCC自带的内建(builtin)函数的接口及实现
 ---
 
 ## 一、GCC内建函数
@@ -135,7 +135,7 @@ description: 一些GCC自带的内建(bulitin)函数的接口及实现
     }
 ```
 
-### **4、__bulitin_popcount**
+### **4、__builtin_popcount**
 
 &emsp;一共有三个函数，分别适用于不同的输入类型。
 
@@ -191,7 +191,7 @@ description: 一些GCC自带的内建(bulitin)函数的接口及实现
         return x * 0x0101010101010101 >> 56;
     }
 ```
-### **5、__bulitin_popcount**
+### **5、__builtin_popcount**
 
 &emsp;一共有三个函数，分别适用于不同的输入类型。
 
