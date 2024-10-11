@@ -1,0 +1,639 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>C++关键字与保留标识符 | Tom's develop Blog</title><meta name="keywords" content="C 关键字 保留标识符"><meta name="author" content="Tom"><meta name="copyright" content="Tom"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><meta name="description" content="C++的关键字与保留标识符简介和总结">
+<meta property="og:type" content="article">
+<meta property="og:title" content="C++关键字与保留标识符">
+<meta property="og:url" content="https://tomsworkspace.github.io/2020/11/25/C++%E5%85%B3%E9%94%AE%E5%AD%97%E4%B8%8E%E4%BF%9D%E7%95%99%E6%A0%87%E8%AF%86%E7%AC%A6/index.html">
+<meta property="og:site_name" content="Tom&#39;s develop Blog">
+<meta property="og:description" content="C++的关键字与保留标识符简介和总结">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/TOMsworkspace/TOMsworkspace.github.io/2020/11/25/C++关键字与保留标识符/figure1.jpg">
+<meta property="article:published_time" content="2020-11-25T07:15:19.000Z">
+<meta property="article:modified_time" content="2024-10-11T18:29:55.261Z">
+<meta property="article:author" content="Tom">
+<meta property="article:tag" content="C 关键字 保留标识符">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/TOMsworkspace/TOMsworkspace.github.io/2020/11/25/C++关键字与保留标识符/figure1.jpg"><link rel="shortcut icon" href="https://cdn.jsdelivr.net/gh/TOMsworkspace/BlogHelper@1.0/avatar.png"><link rel="canonical" href="https://tomsworkspace.github.io/2020/11/25/C++%E5%85%B3%E9%94%AE%E5%AD%97%E4%B8%8E%E4%BF%9D%E7%95%99%E6%A0%87%E8%AF%86%E7%AC%A6/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="preconnect" href="//zz.bdstatic.com"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css"><script>var GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"簡"},
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"limitCount":50,"languages":{"author":"作者: Tom","link":"链接: ","source":"来源: Tom's develop Blog","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},
+  ClickShowText: {"text":"富强,民主,文明,和谐,自由,平等,公正,法治,爱国,敬业,诚信,友善","fontSize":"15px"},
+  lightbox: 'mediumZoom',
+  Snackbar: undefined,
+  justifiedGallery: {
+    js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+    css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isanchor: false
+};
+
+var saveToLocal = {
+  set: function setWithExpiry(key, value, ttl) {
+    const now = new Date()
+    const expiryDay = ttl * 86400000
+    const item = {
+      value: value,
+      expiry: now.getTime() + expiryDay,
+    }
+    localStorage.setItem(key, JSON.stringify(item))
+  },
+
+  get: function getWithExpiry(key) {
+    const itemStr = localStorage.getItem(key)
+
+    if (!itemStr) {
+      return undefined
+    }
+    const item = JSON.parse(itemStr)
+    const now = new Date()
+
+    if (now.getTime() > item.expiry) {
+      localStorage.removeItem(key)
+      return undefined
+    }
+    return item.value
+  }
+}</script><script id="config_change">var GLOBAL_CONFIG_SITE = { 
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2024-10-12 02:29:55'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(function () {  window.activateDarkMode = function () {
+    document.documentElement.setAttribute('data-theme', 'dark')
+    if (document.querySelector('meta[name="theme-color"]') !== null) {
+      document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+    }
+  }
+  window.activateLightMode = function () {
+    document.documentElement.setAttribute('data-theme', 'light')
+   if (document.querySelector('meta[name="theme-color"]') !== null) {
+      document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+    }
+  }
+  const autoChangeMode = 'true'
+  const t = saveToLocal.get('theme')
+  if (autoChangeMode === '1') {
+    const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+    const isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
+    const isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
+    const hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+    if (t === undefined) {
+      if (isLightMode) activateLightMode()
+      else if (isDarkMode) activateDarkMode()
+      else if (isNotSpecified || hasNoSupport) {
+        const now = new Date()
+        const hour = now.getHours()
+        const isNight = hour <= 6 || hour >= 18
+        isNight ? activateDarkMode() : activateLightMode()
+      }
+      window.matchMedia('(prefers-color-scheme: dark)').addListener(function (e) {
+        if (saveToLocal.get('theme') === undefined) {
+          e.matches ? activateDarkMode() : activateLightMode()
+        }
+      })
+    } else if (t === 'light') activateLightMode()
+    else activateDarkMode()
+  } else if (autoChangeMode === '2') {
+    const now = new Date()
+    const hour = now.getHours()
+    const isNight = hour <= 6 || hour >= 18
+    if (t === undefined) isNight ? activateDarkMode() : activateLightMode()
+    else if (t === 'light') activateLightMode()
+    else activateDarkMode()
+  } else {
+    if (t === 'dark') activateDarkMode()
+    else if (t === 'light') activateLightMode()
+  }})()</script><meta name="generator" content="Hexo 5.4.2"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="author-avatar"><img class="avatar-img" data-lazy-src="https://cdn.jsdelivr.net/gh/TOMsworkspace/BlogHelper@1.0/avator.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">文章</div><div class="length-num">38</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">标签</div><div class="length-num">73</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">分类</div><div class="length-num">12</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div></div></div><div id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url(https://cdn.jsdelivr.net/gh/TOMsworkspace/TOMsworkspace.github.io/2020/11/25/C++关键字与保留标识符/figure1.jpg)"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Tom's develop Blog</a></span><span id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div><span class="close" id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></span></span></nav><div id="post-info"><h1 class="post-title">C++关键字与保留标识符</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2020-11-25T07:15:19.000Z" title="发表于 2020-11-25 15:15:19">2020-11-25</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-10-11T18:29:55.261Z" title="更新于 2024-10-12 02:29:55">2024-10-12</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/C-C/">C/C++</a></span></div><div class="meta-secondline"> <span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">2.8k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>9分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span><span class="post-meta-separator">|</span><span class="post-meta-commentcount"><i class="far fa-comments fa-fw post-meta-icon"></i><span class="post-meta-label">评论数:</span><a href="/2020/11/25/C++%E5%85%B3%E9%94%AE%E5%AD%97%E4%B8%8E%E4%BF%9D%E7%95%99%E6%A0%87%E8%AF%86%E7%AC%A6/#post-comment"><span class="gitalk-comment-count comment-count"></span></a></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="C-语言关键字和保留标识符"><a href="#C-语言关键字和保留标识符" class="headerlink" title="C++语言关键字和保留标识符"></a>C++语言关键字和保留标识符</h1><h2 id="关键字"><a href="#关键字" class="headerlink" title="关键字"></a>关键字</h2><p>&emsp;关键字是组成编程语言词汇表的标识符，不能将他们用于其他用途。下表列出了C++所有关键字及，包括C++11,14,17及20标准对于关键字用途的重新定义。</p>
+<table>
+<thead>
+<tr>
+<th align="center">关键字</th>
+<th align="center">标准</th>
+<th align="left">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">alignas</td>
+<td align="center">C++11</td>
+<td align="left">用于内存对齐相关</td>
+</tr>
+<tr>
+<td align="center">alignof</td>
+<td align="center">C++11</td>
+<td align="left">用于内存对齐相关</td>
+</tr>
+<tr>
+<td align="center">asm</td>
+<td align="center">C++11</td>
+<td align="left">用于在C++代码中直接插入汇编语言代码</td>
+</tr>
+<tr>
+<td align="center">auto</td>
+<td align="center">C++98,C++11</td>
+<td align="left">C++ 98 中，auto 的作用是让变量成为自动变量（拥有自动的生命周期），但是该作用是多余的，变量默认拥有自动的生命周期。在C++11 中，已经删除了该用法，取而代之的作用是：自动推断变量的类型。</td>
+</tr>
+<tr>
+<td align="center">bool</td>
+<td align="center">C++11</td>
+<td align="left">声明布尔类型变量</td>
+</tr>
+<tr>
+<td align="center">break</td>
+<td align="center">C++98</td>
+<td align="left">跳出循环语句</td>
+</tr>
+<tr>
+<td align="center">case</td>
+<td align="center">C++98</td>
+<td align="left">用于switch分支语句</td>
+</tr>
+<tr>
+<td align="center">catch</td>
+<td align="center">C++11</td>
+<td align="left">异常处理，与try一起用于捕获并处理异常</td>
+</tr>
+<tr>
+<td align="center">char</td>
+<td align="center">C++98</td>
+<td align="left">声明字符类型</td>
+</tr>
+<tr>
+<td align="center">char16_t</td>
+<td align="center">C++11</td>
+<td align="left">声明UTF-16字符集表示的字符类型，要求大到足以表示任何 UTF-16 编码单元（16位）。</td>
+</tr>
+<tr>
+<td align="center">char32_t</td>
+<td align="center">C++11</td>
+<td align="left">声明UTF-32字符集表示的字符类型，要求大到足以表示任何 UTF-16 编码单元（32位）。</td>
+</tr>
+<tr>
+<td align="center">class</td>
+<td align="center">C++98,C++11</td>
+<td align="left">1）声明类;声明有作用域枚举类型(C++11 起);2）在模板声明中，class 可用于引入类型模板形参与模板模板形参;3）若作用域中存在具有与某个类类型的名字相同的名字的函数或变量，则 class 可附于类名之前以消歧义，这时被用作类型说明符</td>
+</tr>
+<tr>
+<td align="center">const</td>
+<td align="center">C++98</td>
+<td align="left">可出现于任何类型说明符中，以指定被声明对象或被命名类型的常量性（constness）。</td>
+</tr>
+<tr>
+<td align="center">const_cast</td>
+<td align="center">C++11</td>
+<td align="left">在有不同 cv 限定(const and volatile)的类型间进行类型转换。</td>
+</tr>
+<tr>
+<td align="center">constexpr</td>
+<td align="center">C++11,14,17</td>
+<td align="left">constexpr 说明符声明可以在编译时求得函数或变量的值。然后这些变量和函数（若给定了合适的函数实参）可用于编译时生成常量表达式。用于对象或非静态成员函数 (C++14 前)声明的constexpr说明符蕴含const。用于函数声明的 constexpr说明符或static 成员变量 (C++17 起)蕴含inline。若函数或函数模板的任何声明拥有constexpr说明符，则每个声明必须都含有该说明符。</td>
+</tr>
+<tr>
+<td align="center">continue</td>
+<td align="center">C++98</td>
+<td align="left">跳出当前循环，开始下一次循环</td>
+</tr>
+<tr>
+<td align="center">dealtype</td>
+<td align="center">C++11,14,17</td>
+<td align="left">检查实体的声明类型，或表达式的类型和值类别。对于变量，指定要从其初始化器自动推导出其类型。对于函数，指定要从其return语句推导出其返回类型。(C++14 起)对于非类型模板形参，指定要从实参推导出其类型。(C++17 起)</td>
+</tr>
+<tr>
+<td align="center">default</td>
+<td align="center">C++98</td>
+<td align="left">用于switch分支语句</td>
+</tr>
+<tr>
+<td align="center">delete</td>
+<td align="center">C++11</td>
+<td align="left">解内存分配运算符，与new一起管理动态分配内存；弃置函数，如果取代函数体而使用特殊语法=delete，则该函数被定义为弃置的（deleted）。</td>
+</tr>
+<tr>
+<td align="center">do</td>
+<td align="center">C++98</td>
+<td align="left">do-while循环语句</td>
+</tr>
+<tr>
+<td align="center">double</td>
+<td align="center">C++98</td>
+<td align="left">声明双精度浮点数类型</td>
+</tr>
+<tr>
+<td align="center">dynastic_cast</td>
+<td align="center">C++11</td>
+<td align="left">类型转换运算符，沿继承层级向上、向下及侧向，安全地转换到其他类的指针和引用。</td>
+</tr>
+<tr>
+<td align="center">else</td>
+<td align="center">C++98</td>
+<td align="left">if-else条件语句</td>
+</tr>
+<tr>
+<td align="center">enum</td>
+<td align="center">C++98</td>
+<td align="left">声明枚举类型</td>
+</tr>
+<tr>
+<td align="center">explicit</td>
+<td align="center">C++11,17,20</td>
+<td align="left">1) 指定构造函数或转换函数(C++11 起)或推导指引(C++17起)为显式，即它不能用于隐式转换和复制初始化。2) explicit说明符可以与常量表达式一同使用。当且仅当该常量表达式求值为true时函数为显式(C++20 起)。explicit说明符只可出现于在类定义之内的构造函数或转换函数(C++11 起)的声明说明符序列中。</td>
+</tr>
+<tr>
+<td align="center">export</td>
+<td align="center">C++98,11,20</td>
+<td align="left">用于引用文件外模板声明(C++11 前)。不使用并保留该关键词(C++11 起)(C++20 前)。标记一个声明、一组声明或另一模块为当前模块所导出(C++20 起)。</td>
+</tr>
+<tr>
+<td align="center">extern</td>
+<td align="center">C++98</td>
+<td align="left">具有外部链接的静态存储期说明符,显式模板实例化声明</td>
+</tr>
+<tr>
+<td align="center">false</td>
+<td align="center">C++11</td>
+<td align="left">布尔值假</td>
+</tr>
+<tr>
+<td align="center">float</td>
+<td align="center">C++98</td>
+<td align="left">声明单精度的浮点类型</td>
+</tr>
+<tr>
+<td align="center">for</td>
+<td align="center">C++98</td>
+<td align="left">for循环</td>
+</tr>
+<tr>
+<td align="center">friend</td>
+<td align="center">C++11</td>
+<td align="left">友元声明出现于类体内，并向一个函数或另一个类授予对包含友元声明的类的私有及受保护成员的访问权。</td>
+</tr>
+<tr>
+<td align="center">goto</td>
+<td align="center">C++98</td>
+<td align="left">程序跳转到指定的位置</td>
+</tr>
+<tr>
+<td align="center">if</td>
+<td align="center">C++98</td>
+<td align="left">if条件语句</td>
+</tr>
+<tr>
+<td align="center">inline</td>
+<td align="center">C++98</td>
+<td align="left">声明内联类型</td>
+</tr>
+<tr>
+<td align="center">int</td>
+<td align="center">C++98</td>
+<td align="left">声明整形类型</td>
+</tr>
+<tr>
+<td align="center">long</td>
+<td align="center">C++98</td>
+<td align="left">声明长整型</td>
+</tr>
+<tr>
+<td align="center">mutable</td>
+<td align="center">C++11</td>
+<td align="left">可出现于任何类型说明符（包括声明文法的声明说明符序列）中，以指定被声明对象或被命名类型的常量性（constness）或易变性（volatility）。</td>
+</tr>
+<tr>
+<td align="center">namespace</td>
+<td align="center">C++11</td>
+<td align="left">声明名称空间以避免名称冲突</td>
+</tr>
+<tr>
+<td align="center">new</td>
+<td align="center">C++11</td>
+<td align="left">分配运算符，与delete一起管理动态分配内存。</td>
+</tr>
+<tr>
+<td align="center">noexcept</td>
+<td align="center">C++11</td>
+<td align="left">1）noexcept运算符,进行编译时检查，若表达式声明为不抛出任何异常则返回true。2）noexcept说明符，指定函数是否抛出异常。</td>
+</tr>
+<tr>
+<td align="center">nullptr</td>
+<td align="center">C++11</td>
+<td align="left">指针字面量，用于表示空指针</td>
+</tr>
+<tr>
+<td align="center">operator</td>
+<td align="center">C++11</td>
+<td align="left">为用户定义类型的操作数重载C++运算符。</td>
+</tr>
+<tr>
+<td align="center">private</td>
+<td align="center">C++11</td>
+<td align="left">访问说明符。在class/struct或union的成员说明中，定义其后继成员的可访问性。</td>
+</tr>
+<tr>
+<td align="center">protected</td>
+<td align="center">C++11</td>
+<td align="left">访问说明符。在class/struct或union的成员说明中，定义其后继成员的可访问性。</td>
+</tr>
+<tr>
+<td align="center">public</td>
+<td align="center">C++11</td>
+<td align="left">访问说明符。在class/struct或union的成员说明中，定义其后继成员的可访问性。</td>
+</tr>
+<tr>
+<td align="center">register</td>
+<td align="center">C++98,17</td>
+<td align="left">自动存储期说明符(弃用)。(C++17 前)register关键字请求编译器尽可能的将变量存在CPU内部寄存器中，而不是通过内存寻址访问，以提高效率。不使用并保留该关键词(C++17 起)。</td>
+</tr>
+<tr>
+<td align="center">reinterpret_cast</td>
+<td align="center">C++11</td>
+<td align="left">类型转换运算符。通过重新解释底层位模式在类型间转换。</td>
+</tr>
+<tr>
+<td align="center">return</td>
+<td align="center">C++98</td>
+<td align="left">函数返回</td>
+</tr>
+<tr>
+<td align="center">short</td>
+<td align="center">C++98</td>
+<td align="left">声明短整型数据类型</td>
+</tr>
+<tr>
+<td align="center">signed</td>
+<td align="center">C++98</td>
+<td align="left">声明带符号的数据类型</td>
+</tr>
+<tr>
+<td align="center">sizeof</td>
+<td align="center">C++98</td>
+<td align="left">返回指向的数据对象或类型所占空间的大小，以字节(byte)为单位</td>
+</tr>
+<tr>
+<td align="center">static</td>
+<td align="center">C++98</td>
+<td align="left">声明具有静态存储期和内部链接的命名空间成员,定义具有静态存储期且仅初始化一次的块作用域变量,声明不绑定到特定实例的类成员</td>
+</tr>
+<tr>
+<td align="center">static_assert</td>
+<td align="center">C++11</td>
+<td align="left">声明编译时检查的断言</td>
+</tr>
+<tr>
+<td align="center">static_cast</td>
+<td align="center">C++11</td>
+<td align="left">类型转换运算符。用隐式和用户定义转换的组合在类型间转换。</td>
+</tr>
+<tr>
+<td align="center">struct</td>
+<td align="center">C++98</td>
+<td align="left">声明结构体变量类型</td>
+</tr>
+<tr>
+<td align="center">switch</td>
+<td align="center">C++98</td>
+<td align="left">switch分支语句</td>
+</tr>
+<tr>
+<td align="center">template</td>
+<td align="center">C++11</td>
+<td align="left">声明模板类型</td>
+</tr>
+<tr>
+<td align="center">this</td>
+<td align="center">C++11</td>
+<td align="left">关键字this是一个纯右值表达式，其值是隐式对象形参（在其上调用非静态成员函数的对象）的地址。它能出现于下列语境：1) 在任何非静态成员函数体内，包括成员初始化器列表；2) 在非静态成员函数的声明中，（可选的）cv 限定符（const and volatile）序列之后的任何位置，包括动态异常说明(弃用)、noexcept 说明(C++11)以及尾随返回类型(C++11 起)3) 在默认成员初始化器中。(C++11 起)</td>
+</tr>
+<tr>
+<td align="center">thread_local</td>
+<td align="center">C++11</td>
+<td align="left">声明属于创建线程私有的线程局部数据变量</td>
+</tr>
+<tr>
+<td align="center">throw</td>
+<td align="center">C++11</td>
+<td align="left">抛出异常</td>
+</tr>
+<tr>
+<td align="center">true</td>
+<td align="center">C++11</td>
+<td align="left">布尔值真</td>
+</tr>
+<tr>
+<td align="center">try</td>
+<td align="center">C++11</td>
+<td align="left">异常处理，与catch一起用于捕获并处理异常</td>
+</tr>
+<tr>
+<td align="center">typedef</td>
+<td align="center">C++98</td>
+<td align="left">创建能在任何位置替代（可能复杂的）类型名的别名。</td>
+</tr>
+<tr>
+<td align="center">typeid</td>
+<td align="center">C++11</td>
+<td align="left">查询类型的信息。用于必须知晓多态对象的动态类型的场合以及静态类型鉴别。</td>
+</tr>
+<tr>
+<td align="center">typename</td>
+<td align="center">C++11,17</td>
+<td align="left">在模板声明中，typename可用作class的代替品，以声明类型模板形参和模板形参(C++17 起)。在模板的声明或定义内，typename可用于声明某个待决的有限定名类型。</td>
+</tr>
+<tr>
+<td align="center">union</td>
+<td align="center">C++98</td>
+<td align="left">声明联合体类型变量</td>
+</tr>
+<tr>
+<td align="center">unsigned</td>
+<td align="center">C++98</td>
+<td align="left">声明无符号类型变量</td>
+</tr>
+<tr>
+<td align="center">using</td>
+<td align="center">C++11</td>
+<td align="left">对命名空间的using指令及对命名空间成员的using声明;对类成员的using声明;类型别名与别名模板声明。(C++11 起)</td>
+</tr>
+<tr>
+<td align="center">virtual</td>
+<td align="center">C++11</td>
+<td align="left">说明符指定非静态成员函数为虚函数并实现运行时多态。用于声明虚基类。</td>
+</tr>
+<tr>
+<td align="center">void</td>
+<td align="center">C++98</td>
+<td align="left">声明无(void)类型的变量,无形参函数的形参列表。</td>
+</tr>
+<tr>
+<td align="center">volatile</td>
+<td align="center">C++98</td>
+<td align="left">可出现于任何类型说明符中，以指定被声明对象或被命名类型的易变性（volatility）。</td>
+</tr>
+<tr>
+<td align="center">wchar_t</td>
+<td align="center">C++11</td>
+<td align="left">宽字符类型。要求大到足以表示任何受支持的字符编码。</td>
+</tr>
+<tr>
+<td align="center">while</td>
+<td align="center">C++98</td>
+<td align="left">do-while循环语句</td>
+</tr>
+</tbody></table>
+<p>&emsp;将所有关键字分一下类大概可以分为如下几类</p>
+<ul>
+<li>数据类型，包括auto,bool,char,char16_t,char32_t,class,double,enum,false,float,int,long,nullptr,short,signed,struct,template,true,union,unsigned,void,wchar_t。  </li>
+<li>存储类别说明符，包括auto,extern,register,static,thread_local,</li>
+<li>程序控制，包括asm,break,case,continue,default,do,else,for,goto,if,rturn,switch,while。</li>
+<li>类型限定，包括const,mutable,volatile。</li>
+<li>类型转换，包括const_cast,dynastic_cast,reinterpret_cast,static_cast,explicit。</li>
+<li>异常处理，包括catch,try,throw,noexcept。</li>
+<li>内存管理相关，包括new,delete,alignas,alignof,sizeof。</li>
+<li>类相关，包括class,explicit,friend,namespace,operator,private,protected,public,template,this,using,virtual。</li>
+<li>编译优化相关，包括constexpr,inline,static_assert。</li>
+<li>其他，包括export,dealtype,typedef,typeid,typename。。</li>
+</ul>
+<h2 id="替代标记"><a href="#替代标记" class="headerlink" title="替代标记"></a>替代标记</h2><p>&emsp;除关键字外，C++有一些运算符能被字母替代，成为替代标记。运算符的替代标记如下表：</p>
+<table>
+<thead>
+<tr>
+<th align="center">标记</th>
+<th align="left">含义</th>
+<th align="center">标记</th>
+<th align="left">含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">and</td>
+<td align="left">&amp;&amp;</td>
+<td align="center">and_eq</td>
+<td align="left">&amp;=</td>
+</tr>
+<tr>
+<td align="center">bitand</td>
+<td align="left">&amp;</td>
+<td align="center">bitor</td>
+<td align="left">|</td>
+</tr>
+<tr>
+<td align="center">compl</td>
+<td align="left">~</td>
+<td align="center">not</td>
+<td align="left">!</td>
+</tr>
+<tr>
+<td align="center">not_eq</td>
+<td align="left">!=</td>
+<td align="center">or</td>
+<td align="left">||</td>
+</tr>
+<tr>
+<td align="center">or_eq</td>
+<td align="left">|=</td>
+<td align="center">xor</td>
+<td align="left">^</td>
+</tr>
+<tr>
+<td align="center">xor_eq</td>
+<td align="left">^=</td>
+<td align="center"></td>
+<td align="left"></td>
+</tr>
+</tbody></table>
+<h2 id="保留标识符"><a href="#保留标识符" class="headerlink" title="保留标识符"></a>保留标识符</h2><p>&emsp;还有一些保留标识符。C++语言已经指定了它们的用途或保留它们的使用权，如果你使用这些标识符,后果是不确定的。也就是说，可能导致编译错误、警告、程序不能正确运行或者根本不会导致任何问题。</p>
+<p>&emsp;C++语言保留了库头文件中使用的宏名。如果程序中包含了某个头文件，则不应该将该头文件中定义的宏名用作其他目的。C++语言保留了以两个下划线或下划线和大写字母打头的名称，还将以单个下划线打头的名称保留用作全局变量。C++语言保留了在库头文件中被声明为外部链接性的名称。如函数特征标（名称和参数列表）。</p>
+<h2 id="有特殊含义的标识符"><a href="#有特殊含义的标识符" class="headerlink" title="有特殊含义的标识符"></a>有特殊含义的标识符</h2><p>&emsp;C++使用具有特殊意义的标识符来避免新增关键字。这些标识符不是关键字，但用于实现语言功能。编译器根据上下文来判断他们是常规标识符还是用于实现语言功能。例如，virtual,delete,final,override等。</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">Tom</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://tomsworkspace.github.io/2020/11/25/C++%E5%85%B3%E9%94%AE%E5%AD%97%E4%B8%8E%E4%BF%9D%E7%95%99%E6%A0%87%E8%AF%86%E7%AC%A6/">https://tomsworkspace.github.io/2020/11/25/C++%E5%85%B3%E9%94%AE%E5%AD%97%E4%B8%8E%E4%BF%9D%E7%95%99%E6%A0%87%E8%AF%86%E7%AC%A6/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://TOMsworkspace.github.io" target="_blank">Tom's develop Blog</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/C-%E5%85%B3%E9%94%AE%E5%AD%97-%E4%BF%9D%E7%95%99%E6%A0%87%E8%AF%86%E7%AC%A6/">C 关键字 保留标识符</a></div><div class="post_share"><div class="social-share" data-image="https://cdn.jsdelivr.net/gh/TOMsworkspace/TOMsworkspace.github.io/2020/11/25/C++关键字与保留标识符/figure1.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><div class="post-reward"><div class="reward-button"><i class="fas fa-qrcode"></i> 打赏<div class="reward-main"><ul class="reward-all"><li class="reward-item"><a href="https://cdn.jsdelivr.net/gh/TOMsworkspace/BlogHelper@1.0/wp.jpg" target="_blank"><img class="post-qr-code-img" data-lazy-src="https://cdn.jsdelivr.net/gh/TOMsworkspace/BlogHelper@1.0/wp.jpg" alt="wechat"/></a><div class="post-qr-code-desc">wechat</div></li></ul></div></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2021/02/25/C++%E4%B8%ADconst%E5%8F%98%E9%87%8F%E7%9A%84%E4%BF%AE%E6%94%B9%E4%B8%8E%E8%B5%8B%E5%80%BC/"><img class="prev-cover" data-lazy-src="https://cdn.jsdelivr.net/gh/TOMsworkspace/TOMsworkspace.github.io/2021/02/25/C++中const变量的修改与赋值/figure1.jpg" onerror="onerror=null;src='/img/404.jpg'"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">C++中const变量的修改与赋值</div></div></a></div><div class="next-post pull-right"><a href="/2020/11/23/C++%E8%AF%AD%E8%A8%80%E6%A0%87%E5%87%86/"><img class="next-cover" data-lazy-src="https://cdn.jsdelivr.net/gh/TOMsworkspace/TOMsworkspace.github.io//2020/11/23/C++语言标准/figure1.jpg" onerror="onerror=null;src='/img/404.jpg'"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">C++语言标准</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span> 相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2020/02/24/C语言关键字和保留标识符/" title="C语言关键字和保留标识符"><img class="cover" data-lazy-src="https://cdn.jsdelivr.net/gh/TOMsworkspace/BlogHelper/C语言中输入输出所有格式控制符/figure1.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2020-02-24</div><div class="title">C语言关键字和保留标识符</div></div></a></div></div></div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="gitalk-container"></div></div></div></div></div><div class="aside_content" id="aside_content"><div class="card-widget card-info"><div class="card-content"><div class="card-info-avatar is-center"><img class="avatar-img" data-lazy-src="https://cdn.jsdelivr.net/gh/TOMsworkspace/BlogHelper@1.0/avator.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/><div class="author-info__name">Tom</div><div class="author-info__description">keep curiously!</div></div><div class="card-info-data"><div class="card-info-data-item is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">38</div></a></div><div class="card-info-data-item is-center"><a href="/tags/"><div class="headline">标签</div><div class="length-num">73</div></a></div><div class="card-info-data-item is-center"><a href="/categories/"><div class="headline">分类</div><div class="length-num">12</div></a></div></div><a class="button--animated" id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/TOMsworkspace"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/TOMsworkspace" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:cqucscw@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div></div><div class="card-widget card-announcement"><div class="card-content"><div class="item-headline"><i class="fas fa-bullhorn card-announcement-animation"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="card-content"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#C-%E8%AF%AD%E8%A8%80%E5%85%B3%E9%94%AE%E5%AD%97%E5%92%8C%E4%BF%9D%E7%95%99%E6%A0%87%E8%AF%86%E7%AC%A6"><span class="toc-number">1.</span> <span class="toc-text">C++语言关键字和保留标识符</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%B3%E9%94%AE%E5%AD%97"><span class="toc-number">1.1.</span> <span class="toc-text">关键字</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9B%BF%E4%BB%A3%E6%A0%87%E8%AE%B0"><span class="toc-number">1.2.</span> <span class="toc-text">替代标记</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BF%9D%E7%95%99%E6%A0%87%E8%AF%86%E7%AC%A6"><span class="toc-number">1.3.</span> <span class="toc-text">保留标识符</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%89%E7%89%B9%E6%AE%8A%E5%90%AB%E4%B9%89%E7%9A%84%E6%A0%87%E8%AF%86%E7%AC%A6"><span class="toc-number">1.4.</span> <span class="toc-text">有特殊含义的标识符</span></a></li></ol></li></ol></div></div></div><div class="card-widget card-recent-post"><div class="card-content"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2021/09/27/%E6%B5%81%E4%BD%93%E6%A8%A1%E6%8B%9F%E4%B8%8ESPH%E6%96%B9%E6%B3%95/" title="流体模拟与SPH方法"><img data-lazy-src="https://cdn.jsdelivr.net/gh/TOMsworkspace/TOMsworkspace.github.io/2021/09/27/流体模拟与SPH方法/figure1.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="流体模拟与SPH方法"/></a><div class="content"><a class="title" href="/2021/09/27/%E6%B5%81%E4%BD%93%E6%A8%A1%E6%8B%9F%E4%B8%8ESPH%E6%96%B9%E6%B3%95/" title="流体模拟与SPH方法">流体模拟与SPH方法</a><time datetime="2021-09-27T08:46:17.000Z" title="发表于 2021-09-27 16:46:17">2021-09-27</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/09/11/%E5%BC%B9%E6%80%A7%E6%9C%89%E9%99%90%E5%85%83%E6%96%B9%E6%B3%95/" title="弹性有限元方法"><img data-lazy-src="https://cdn.jsdelivr.net/gh/TOMsworkspace/TOMsworkspace.github.io/2021/09/11/弹性有限元方法/figure1.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="弹性有限元方法"/></a><div class="content"><a class="title" href="/2021/09/11/%E5%BC%B9%E6%80%A7%E6%9C%89%E9%99%90%E5%85%83%E6%96%B9%E6%B3%95/" title="弹性有限元方法">弹性有限元方法</a><time datetime="2021-09-11T09:05:34.000Z" title="发表于 2021-09-11 17:05:34">2021-09-11</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/08/09/%E5%BC%B9%E7%B0%A7%E8%B4%A8%E7%82%B9%E7%B3%BB%E7%BB%9F%E4%B8%8E%E6%97%B6%E9%97%B4%E7%A7%AF%E5%88%86/" title="弹簧质点系统与时间积分"><img data-lazy-src="https://cdn.jsdelivr.net/gh/TOMsworkspace/TOMsworkspace.github.io/2021/08/09/弹簧质点系统与时间积分/figure1.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="弹簧质点系统与时间积分"/></a><div class="content"><a class="title" href="/2021/08/09/%E5%BC%B9%E7%B0%A7%E8%B4%A8%E7%82%B9%E7%B3%BB%E7%BB%9F%E4%B8%8E%E6%97%B6%E9%97%B4%E7%A7%AF%E5%88%86/" title="弹簧质点系统与时间积分">弹簧质点系统与时间积分</a><time datetime="2021-08-09T13:39:12.000Z" title="发表于 2021-08-09 21:39:12">2021-08-09</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/08/08/OpenGL%E5%9D%90%E6%A0%87%E7%B3%BB%E7%BB%9F/" title="OpenGL坐标系统"><img data-lazy-src="https://cdn.jsdelivr.net/gh/TOMsworkspace/TOMsworkspace.github.io/2021/08/08/OpenGL坐标系统/figure1.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="OpenGL坐标系统"/></a><div class="content"><a class="title" href="/2021/08/08/OpenGL%E5%9D%90%E6%A0%87%E7%B3%BB%E7%BB%9F/" title="OpenGL坐标系统">OpenGL坐标系统</a><time datetime="2021-08-08T12:57:28.000Z" title="发表于 2021-08-08 20:57:28">2021-08-08</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/08/06/Doxygen%E8%87%AA%E5%8A%A8%E7%94%9F%E6%88%90%E6%96%87%E6%A1%A3/" title="Doxygen自动生成文档"><img data-lazy-src="https://cdn.jsdelivr.net/gh/TOMsworkspace/TOMsworkspace.github.io/2021/08/06/Doxygen自动生成文档/Doxygen.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Doxygen自动生成文档"/></a><div class="content"><a class="title" href="/2021/08/06/Doxygen%E8%87%AA%E5%8A%A8%E7%94%9F%E6%88%90%E6%96%87%E6%A1%A3/" title="Doxygen自动生成文档">Doxygen自动生成文档</a><time datetime="2021-08-06T13:24:50.000Z" title="发表于 2021-08-06 21:24:50">2021-08-06</time></div></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2019 - 2024 By Tom</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text">Hi, welcome to my <a href="https://TOMsworkspace.github.io/">blog</a>!</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">简</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog"></i></button><button id="chat_btn" type="button" title="rightside.chat_btn"><i class="fas fa-sms"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.jsdelivr.net/npm/medium-zoom/dist/medium-zoom.min.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page/instantpage.min.js" type="module" defer></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload/dist/lazyload.iife.min.js"></script><div class="js-pjax"><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.css"><script src="https://cdn.jsdelivr.net/npm/katex-copytex@latest/dist/katex-copytex.min.js"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/katex-copytex@latest/dist/katex-copytex.min.css"><script>$(function () {
+  $('span.katex-display').wrap('<div class="katex-wrap"></div>')
+})</script><script>function addGitalkSource () {
+  const ele = document.createElement('link')
+  ele.rel = 'stylesheet'
+  ele.href= 'https://cdn.jsdelivr.net/npm/gitalk/dist/gitalk.min.css'
+  document.getElementsByTagName('head')[0].appendChild(ele)
+}
+
+function loadGitalk () {
+  function initGitalk () {
+    var gitalk = new Gitalk({
+      clientID: 'e50742231659674c31e3',
+      clientSecret: '59038139e289bc384e484d341205bbb95a123209',
+      repo: 'TOMsworkspace.github.io',
+      owner: 'TOMsworkspace',
+      admin: ['TOMsworkspace'],
+      id: 'f6d5c1456a11f88ad9845c924b8b058d',
+      language: '-zh-CN# en, zh-CN, zh-TW, es-ES, fr, ru',
+      perPage: 10,
+      distractionFreeMode: false,
+      pagerDirection: 'last',
+      createIssueManually: true,
+      updateCountCallback: commentCount
+    })
+    gitalk.render('gitalk-container')
+  }
+
+  if (typeof Gitalk === 'function') initGitalk()
+  else {
+    addGitalkSource()
+    $.getScript('https://cdn.jsdelivr.net/npm/gitalk@latest/dist/gitalk.min.js', initGitalk)
+  }
+}
+
+function commentCount(n){
+  let isCommentCount = document.querySelector('#post-meta .gitalk-comment-count')
+  if (isCommentCount) {
+    isCommentCount.innerHTML= n
+  }
+}
+
+if ('Gitalk' === 'Gitalk' || !false) {
+  if (false) btf.loadComment(document.getElementById('gitalk-container'), loadGitalk)
+  else loadGitalk()
+} else {
+  function loadOtherComment () {
+    loadGitalk()
+  }
+}</script><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div><script defer="defer" id="fluttering_ribbon" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/canvas-fluttering-ribbon.min.js"></script><script id="click-show-text" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/click-show-text.min.js" async="async" mobile="false"></script><script>(function(){
+  const bp = document.createElement('script');
+  const curProtocol = window.location.protocol.split(':')[0];
+  if (curProtocol === 'https'){
+  bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+  }
+  else{
+  bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+  }
+  bp.dataset.pjax = ''
+  const s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(bp, s);
+})()</script></div></body></html>

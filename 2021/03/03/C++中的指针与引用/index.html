@@ -1,0 +1,246 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>C++中的指针与引用 | Tom's develop Blog</title><meta name="keywords" content="指针、引用"><meta name="author" content="Tom"><meta name="copyright" content="Tom"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><meta name="description" content="C++中的指针与引用的联系与区别">
+<meta property="og:type" content="article">
+<meta property="og:title" content="C++中的指针与引用">
+<meta property="og:url" content="https://tomsworkspace.github.io/2021/03/03/C++%E4%B8%AD%E7%9A%84%E6%8C%87%E9%92%88%E4%B8%8E%E5%BC%95%E7%94%A8/index.html">
+<meta property="og:site_name" content="Tom&#39;s develop Blog">
+<meta property="og:description" content="C++中的指针与引用的联系与区别">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/TOMsworkspace/TOMsworkspace.github.io/2021/03/03/C++中的指针与引用/figure1.jpg">
+<meta property="article:published_time" content="2021-03-03T12:47:52.000Z">
+<meta property="article:modified_time" content="2024-10-11T18:29:55.260Z">
+<meta property="article:author" content="Tom">
+<meta property="article:tag" content="指针">
+<meta property="article:tag" content="引用">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/TOMsworkspace/TOMsworkspace.github.io/2021/03/03/C++中的指针与引用/figure1.jpg"><link rel="shortcut icon" href="https://cdn.jsdelivr.net/gh/TOMsworkspace/BlogHelper@1.0/avatar.png"><link rel="canonical" href="https://tomsworkspace.github.io/2021/03/03/C++%E4%B8%AD%E7%9A%84%E6%8C%87%E9%92%88%E4%B8%8E%E5%BC%95%E7%94%A8/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="preconnect" href="//zz.bdstatic.com"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css"><script>var GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"簡"},
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"limitCount":50,"languages":{"author":"作者: Tom","link":"链接: ","source":"来源: Tom's develop Blog","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},
+  ClickShowText: {"text":"富强,民主,文明,和谐,自由,平等,公正,法治,爱国,敬业,诚信,友善","fontSize":"15px"},
+  lightbox: 'mediumZoom',
+  Snackbar: undefined,
+  justifiedGallery: {
+    js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+    css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isanchor: false
+};
+
+var saveToLocal = {
+  set: function setWithExpiry(key, value, ttl) {
+    const now = new Date()
+    const expiryDay = ttl * 86400000
+    const item = {
+      value: value,
+      expiry: now.getTime() + expiryDay,
+    }
+    localStorage.setItem(key, JSON.stringify(item))
+  },
+
+  get: function getWithExpiry(key) {
+    const itemStr = localStorage.getItem(key)
+
+    if (!itemStr) {
+      return undefined
+    }
+    const item = JSON.parse(itemStr)
+    const now = new Date()
+
+    if (now.getTime() > item.expiry) {
+      localStorage.removeItem(key)
+      return undefined
+    }
+    return item.value
+  }
+}</script><script id="config_change">var GLOBAL_CONFIG_SITE = { 
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2024-10-12 02:29:55'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(function () {  window.activateDarkMode = function () {
+    document.documentElement.setAttribute('data-theme', 'dark')
+    if (document.querySelector('meta[name="theme-color"]') !== null) {
+      document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+    }
+  }
+  window.activateLightMode = function () {
+    document.documentElement.setAttribute('data-theme', 'light')
+   if (document.querySelector('meta[name="theme-color"]') !== null) {
+      document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+    }
+  }
+  const autoChangeMode = 'true'
+  const t = saveToLocal.get('theme')
+  if (autoChangeMode === '1') {
+    const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+    const isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
+    const isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
+    const hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+    if (t === undefined) {
+      if (isLightMode) activateLightMode()
+      else if (isDarkMode) activateDarkMode()
+      else if (isNotSpecified || hasNoSupport) {
+        const now = new Date()
+        const hour = now.getHours()
+        const isNight = hour <= 6 || hour >= 18
+        isNight ? activateDarkMode() : activateLightMode()
+      }
+      window.matchMedia('(prefers-color-scheme: dark)').addListener(function (e) {
+        if (saveToLocal.get('theme') === undefined) {
+          e.matches ? activateDarkMode() : activateLightMode()
+        }
+      })
+    } else if (t === 'light') activateLightMode()
+    else activateDarkMode()
+  } else if (autoChangeMode === '2') {
+    const now = new Date()
+    const hour = now.getHours()
+    const isNight = hour <= 6 || hour >= 18
+    if (t === undefined) isNight ? activateDarkMode() : activateLightMode()
+    else if (t === 'light') activateLightMode()
+    else activateDarkMode()
+  } else {
+    if (t === 'dark') activateDarkMode()
+    else if (t === 'light') activateLightMode()
+  }})()</script><meta name="generator" content="Hexo 5.4.2"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="author-avatar"><img class="avatar-img" data-lazy-src="https://cdn.jsdelivr.net/gh/TOMsworkspace/BlogHelper@1.0/avator.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">文章</div><div class="length-num">38</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">标签</div><div class="length-num">73</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">分类</div><div class="length-num">12</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div></div></div><div id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url(https://cdn.jsdelivr.net/gh/TOMsworkspace/TOMsworkspace.github.io/2021/03/03/C++中的指针与引用/figure1.jpg)"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Tom's develop Blog</a></span><span id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div><span class="close" id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></span></span></nav><div id="post-info"><h1 class="post-title">C++中的指针与引用</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2021-03-03T12:47:52.000Z" title="发表于 2021-03-03 20:47:52">2021-03-03</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-10-11T18:29:55.260Z" title="更新于 2024-10-12 02:29:55">2024-10-12</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/C-C/">C/C++</a></span></div><div class="meta-secondline"> <span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">3k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>10分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span><span class="post-meta-separator">|</span><span class="post-meta-commentcount"><i class="far fa-comments fa-fw post-meta-icon"></i><span class="post-meta-label">评论数:</span><a href="/2021/03/03/C++%E4%B8%AD%E7%9A%84%E6%8C%87%E9%92%88%E4%B8%8E%E5%BC%95%E7%94%A8/#post-comment"><span class="gitalk-comment-count comment-count"></span></a></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><p>&emsp;C/C++中的指针是一个既让人喜欢又恨的特性。使用指针，既方便了代码的编写，但是随之而来的就是各种因空指针、野指针导致的问题。随着语言的发展，C++中出现了引用这个C语言中所没有的特性。因为引用与指针的 “貌合神离” 使得许多人对指针与引用的正确使用一头雾水，摸不着头脑。</p>
+<h2 id="一、指针与引用"><a href="#一、指针与引用" class="headerlink" title="一、指针与引用"></a>一、指针与引用</h2><h3 id="1、指针"><a href="#1、指针" class="headerlink" title="1、指针"></a>1、<strong>指针</strong></h3><p>&emsp;指针，是一个特殊的变量，与int、float之类的变量一样存储变量的值。只是这个值比较特殊：它是另一个变量的地址。对于一个不受限定的指针（非const，非volatile），C++支持通过对指针变量的操作来间接访问和修改它存储的地址的值。因为他是一个变量，所以它存在地址空间，也可以通过修改它存储的地址值来让它指向另一个对象。</p>
+<p>&emsp;对于一个不受限的指针，由于允许它不存储任何变量的地址（空指针）。而且支持多级指针。复杂的语义使得往往在使用时出现各种问题，尤其是在指针作为函数的参数和返回值的时候。出于对于安全和效率的考虑，C++出现了引用这个语言特性。</p>
+<h3 id="2、引用"><a href="#2、引用" class="headerlink" title="2、引用"></a>2、<strong>引用</strong></h3><p>&emsp;简单来说，引用是已定义变量的别名。就如同一个人有几个名字一样，一个大名几个外号一样，无论叫哪个都是在叫。对于别名的读取修改等全部操作也就是对于原变量的操作。就像typedef关键字给类型取别名一样，引用就是给变量取别名。给变量取别名有几条规则：</p>
+<ul>
+<li>（1）引用被创建的同时必须被初始化。</li>
+<li>（2）不能有NULL引用，引用必须与合法的存储单元关联。</li>
+<li>（3）一旦引用被初始化，就不能改变引用的关系。 </li>
+</ul>
+<p>&emsp;(1)(2)条规则说的是一个东西。给人取外号你得首先要有这么人吧，不能先取一个外号逮着谁谁就叫这个名。(3)的意思是一旦给人取了外号，这外号就跟着你了，直到人没了（变量销毁）。一个外号不能今天是张三，明天是李四吧。那我找这个外号是找张三还是找李四啊。如果没有这条规则的限定就可能出现很复杂的情况了。</p>
+<h2 id="二、指针与引用的区别"><a href="#二、指针与引用的区别" class="headerlink" title="二、指针与引用的区别"></a>二、指针与引用的区别</h2><p>从引用和指针的定义和规则来看:</p>
+<p>1、指针的值可以为空，但是引用的值不能为NULL，”<strong>并且引用在定义的时候必须初始化</strong>“。</p>
+<p>&emsp;由于指针在定义时并不要求必须赋初值，所以指针可能是空(NULL)值；但是引用规则要求它必须在定义时初始化，所以它不能为空值，即不能绑定到空的对象。<strong>这使得指针在使用前必须对其进行非空检查，而引用就不需要了</strong>。在多重函数调用和返回时往往容易忘记对指针的非空判断而导致程序异常；引用则不需要对其进行检查。引用这个特性最初被引入的主要原因就是用于作为函数的形参。</p>
+<p>&emsp;”引用在定义时必须初始化”这句话真的没问题么？我觉得是不太严谨的。看下面的例子：</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="keyword">struct</span>  <span class="title class_">Test</span>&#123;</span><br><span class="line">    <span class="type">int</span> a[<span class="number">5</span>];</span><br><span class="line">    <span class="type">int</span> &amp;b;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">cout &lt;&lt; <span class="built_in">sizeof</span>(tag) &lt;&lt; endl;</span><br></pre></td></tr></table></figure>
+<p>&emsp;这段代码是可以编译通过的，在64位下x86机器下输出结果是32。这个结构体定义了一个引用，但是并未初始化。下面对结构体实例一下:</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="keyword">struct</span>  <span class="title class_">Test</span>&#123;</span><br><span class="line">    <span class="type">int</span> a[<span class="number">5</span>];</span><br><span class="line">    <span class="type">int</span> &amp;b;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">Test test;</span><br><span class="line"></span><br><span class="line">cout &lt;&lt; <span class="built_in">sizeof</span>(tag) &lt;&lt; endl;</span><br></pre></td></tr></table></figure>
+<p>&emsp;这段代码是无法编译通过的，错误是没有合适的构造函数可用。因此“定义时必须初始化”这句话应该改成“分配空间时必须初始化”更合适一些。</p>
+<p>2、<strong>引用只能在定义时被初始化一次，之后不可变；指针在初始后依然可变。</strong></p>
+<p>&emsp;引用初始化后就不可变的作用类似于一个指针常量，即一个指向了对象之后就不能更改使其指向其他的对象的指针。我们都知道，语言特性只是定义于语言编译器的一些特殊规则。<br>&emsp;实际上，多数编译器对引用的底层实现就是一个指针常量加上一些语法规则。引用与指针常量的区别就在于指针常量定义时可以不需要初始化，而且指针与引用访问绑定对象的语法规则也不一样，不过这都只是一些编译器层面的区别。</p>
+<p>3、指针是一个实体，需要分配内存空间。引用只是变量的别名，”<strong>不需要分配内存空间</strong>“。</p>
+<p>&emsp;引用把对本身的一切操作都对应到其绑定的对象上，包括取地址运算。所以对引用变量取地址得到的是它绑定对象的地址。实际上，编译器对我们隐藏了引用变量的地址即空间的信息，当对引用变量取地址时返回的是其绑定变量的地址。从这个现象看来，引用变量似乎是不占地址空间的，但是实际上真的是这样么？恐怕并不是。</p>
+<p>&emsp;之前那个例子的输出是32，5个int占20bytes，由于内存对齐，数组要占24个字节，那剩下的8个bytes的空间应该是引用变量所用。所以引用不需要分配空间的说法并不严谨。</p>
+<p>&emsp;再考虑这样一个场景：当一个接受引用参数的函数在实际运行时，传入的变量绑定到一个引用变量上，无论传入的是一个变量还是一个同类型的变量引用，实际上传入的都是变量的地址，那在函数运行的过程中，肯定是需要空间来保存这个地址的。而且在函数返回引用时也是一样。</p>
+<p>&emsp;那是不是引用变量就一定需要空间呢？我觉得也不一定。看下面一段代码：</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="type">int</span> a =<span class="number">1</span>;</span><br><span class="line"><span class="type">int</span> &amp; b = a;</span><br><span class="line"></span><br><span class="line">cout &lt;&lt; a &lt;&lt; <span class="string">&quot; &quot;</span> &lt;&lt; b &lt;&lt; endl;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>&emsp;这里就不需要也没必要再来浪费空间来保存一个引用变量，编译器在编译时就可以直接使用原变量来直接替换这个引用。<a target="_blank" rel="noopener" href="http://bbs.csdn.net/topics/320095541">实际上，标准并没有规定引用要不要占用内存，也没有规定引用具体要怎么实现，具体随编译器。</a>不过，大多数编译器实现是占用了空间的。 </p>
+<p>4、<strong>有多级指针，但是没有多级引用，只能有一级引用。</strong></p>
+<p>&emsp;根据引用的定义，是没有也不需要多级引用的存在的。想一想，你有一个外号了，还要给你的外号取外号有用么，没有必要吧？但是指针的指针就有其用处了，多级指针是有用处的，如定义多维数组。</p>
+<p>&emsp;注意，在C++11中，出现了例如 int &amp;&amp; a 的用法，这是C++11引入的新特性 “<strong>右值引用</strong>” 而不是多级引用。</p>
+<p>5、<strong>指针和引用的自增运算结果不一样。</strong></p>
+<p>&emsp;指针自增的结果是指向下一个地址，与原本的地址相差一个指针类型的空间大小；引用加一时引用的绑定的变量值加1。</p>
+<p>6、sizeof引用得到的是所指向的变量（对象）的大小，而sizeof 指针得到的是指针本身的大小。</p>
+<p>7、<strong>没有const引用，有const指针。</strong></p>
+<p>&emsp;例如对于int 类型，具体指没有int&amp; const a这种形式，而const int&amp; a是有 的，前者指引用本身即别名不可以改变，这是当然的（引用规则规定），所以没有也不需要这种形式，后者（常量引用或常引用）指引用所指的值不可以改变，这种用法是存在的。</p>
+<p>&emsp;这与指针类似，当const修饰指针类型时。根据关键字出现的地方有指针常量和常量指针以及指向常量的常量指针三种用法。指针常量表示一个指向常量的指针，不可用指针修改指向变量的值，但是可修改指针的值使其指向其它变量；指针常量表示不能修改指针使其指向其它变量，但是可以修改指向变量的值，这与引用相对应；指向常量的指针常量表示不可以修改指针指向的变量也不能修改指针使其指向其它变量，这与常量引用相对应。比较绕，请看下面的代码：</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="comment">//指针</span></span><br><span class="line"><span class="comment">//1.常量指针</span></span><br><span class="line"><span class="type">const</span> <span class="type">int</span> * p;</span><br><span class="line"><span class="type">int</span> <span class="type">const</span> * p;</span><br><span class="line"></span><br><span class="line"><span class="comment">//2.指针常量</span></span><br><span class="line"><span class="type">int</span> * <span class="type">const</span> p;</span><br><span class="line"></span><br><span class="line"><span class="comment">//3.指向常量的指针常量</span></span><br><span class="line"><span class="type">int</span> <span class="type">const</span> * <span class="type">const</span> p;</span><br><span class="line"><span class="type">const</span> <span class="type">int</span> * <span class="type">const</span> p;</span><br><span class="line"></span><br><span class="line"><span class="comment">//引用</span></span><br><span class="line"><span class="comment">//1.引用,类似于指针常量</span></span><br><span class="line"><span class="type">int</span> &amp; a; <span class="comment">//合法</span></span><br><span class="line"><span class="type">int</span> &amp; <span class="type">const</span> a; <span class="comment">//不存在也不需要</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//2.常量引用，类似于指向常量的指针常量</span></span><br><span class="line"><span class="type">const</span> <span class="type">int</span> &amp; a;</span><br><span class="line"><span class="type">int</span> <span class="type">const</span> &amp; a;</span><br></pre></td></tr></table></figure>
+
+<p>8、<strong>引用比指针更加安全</strong></p>
+<p>&emsp;这个区别也是来自于引用的规则定义导致的。引用在定义时就与变量绑定了，而指针不一定，指针在定义后没有初始化就是空指针。引用与被引用的变量是同一个地址，编译器隐藏了引用的地址不能对引用本身进行地址操作，这样使地址是不可修改的，使访问更加安全。指针可能导致空指针、野指针、数组越界之类的问题，但引用不会。</p>
+<h2 id="三、为什么要有引用"><a href="#三、为什么要有引用" class="headerlink" title="三、为什么要有引用"></a>三、为什么要有引用</h2><p>&emsp;不存在指向空值的引用这个事实，意味着使用引用的代码效率比使用指针的要高。因为在使用引用之前不需要测试它的合法性。相反，指针则应该总是被测试，防止其为空。</p>
+<p>&emsp;而指针可能导致空指针、野指针、数组越界之类的问题，但引用不会。但是要注意，在返回引用的函数中，应避免返回局部变量的引用这种用法。局部变量在函数退出时被销毁，返回其引用导致引用绑定到不存在的变量上，这会导致不可预见的错误。</p>
+<p>[1]<a target="_blank" rel="noopener" href="https://www.runoob.com/w3cnote/cpp-difference-between-pointers-and-references.html">https://www.runoob.com/w3cnote/cpp-difference-between-pointers-and-references.html</a><br>[2]<a target="_blank" rel="noopener" href="https://blog.csdn.net/zhengqijun_/article/details/54980769?utm_medium=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-2.control&amp;dist_request_id=1328592.13329.16147746419368463&amp;depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-2.control">https://blog.csdn.net/zhengqijun_/article/details/54980769?utm_medium=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-2.control&amp;dist_request_id=1328592.13329.16147746419368463&amp;depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-2.control</a><br>[3]<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_27678917/article/details/70224813">https://blog.csdn.net/qq_27678917/article/details/70224813</a><br>[4]<a target="_blank" rel="noopener" href="https://blog.csdn.net/superwangxinrui/article/details/80565594?utm_medium=distribute.pc_relevant.none-task-blog-baidujs_baidulandingword-2&amp;spm=1001.2101.3001.4242">https://blog.csdn.net/superwangxinrui/article/details/80565594?utm_medium=distribute.pc_relevant.none-task-blog-baidujs_baidulandingword-2&amp;spm=1001.2101.3001.4242</a><br>[5]<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_30270889/article/details/97389623?utm_medium=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-3.control&amp;dist_request_id=1328593.13456.16147750581565135&amp;depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-3.control">https://blog.csdn.net/weixin_30270889/article/details/97389623?utm_medium=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-3.control&amp;dist_request_id=1328593.13456.16147750581565135&amp;depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-3.control</a><br>[6]<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_39539470/article/details/81273179?utm_medium=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-2.control&amp;dist_request_id=1328593.13456.16147750581565135&amp;depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-2.control">https://blog.csdn.net/qq_39539470/article/details/81273179?utm_medium=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-2.control&amp;dist_request_id=1328593.13456.16147750581565135&amp;depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-2.control</a><br>[7]<a target="_blank" rel="noopener" href="https://blog.csdn.net/wanttifa/article/details/100904422">https://blog.csdn.net/wanttifa/article/details/100904422</a><br>[8]<a target="_blank" rel="noopener" href="https://blog.csdn.net/gmcxsqjh/article/details/3719552?utm_medium=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-1.control&amp;dist_request_id=&amp;depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-1.control">https://blog.csdn.net/gmcxsqjh/article/details/3719552?utm_medium=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-1.control&amp;dist_request_id=&amp;depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-1.control</a><br>[9]<a target="_blank" rel="noopener" href="https://blog.csdn.net/vczlyz/article/details/79214334?utm_medium=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-2.control&amp;dist_request_id=1328592.13326.16147803071270639&amp;depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-2.control">https://blog.csdn.net/vczlyz/article/details/79214334?utm_medium=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-2.control&amp;dist_request_id=1328592.13326.16147803071270639&amp;depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-2.control</a><br>[10]<a target="_blank" rel="noopener" href="https://blog.csdn.net/dimengban0741/article/details/101880410?utm_medium=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-2.control&amp;dist_request_id=&amp;depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-2.control">https://blog.csdn.net/dimengban0741/article/details/101880410?utm_medium=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-2.control&amp;dist_request_id=&amp;depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-2.control</a><br>[11]<a target="_blank" rel="noopener" href="https://bbs.csdn.net/topics/320095541">https://bbs.csdn.net/topics/320095541</a></p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">Tom</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://tomsworkspace.github.io/2021/03/03/C++%E4%B8%AD%E7%9A%84%E6%8C%87%E9%92%88%E4%B8%8E%E5%BC%95%E7%94%A8/">https://tomsworkspace.github.io/2021/03/03/C++%E4%B8%AD%E7%9A%84%E6%8C%87%E9%92%88%E4%B8%8E%E5%BC%95%E7%94%A8/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://TOMsworkspace.github.io" target="_blank">Tom's develop Blog</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E6%8C%87%E9%92%88/">指针</a><a class="post-meta__tags" href="/tags/%E5%BC%95%E7%94%A8/">引用</a></div><div class="post_share"><div class="social-share" data-image="https://cdn.jsdelivr.net/gh/TOMsworkspace/TOMsworkspace.github.io/2021/03/03/C++中的指针与引用/figure1.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><div class="post-reward"><div class="reward-button"><i class="fas fa-qrcode"></i> 打赏<div class="reward-main"><ul class="reward-all"><li class="reward-item"><a href="https://cdn.jsdelivr.net/gh/TOMsworkspace/BlogHelper@1.0/wp.jpg" target="_blank"><img class="post-qr-code-img" data-lazy-src="https://cdn.jsdelivr.net/gh/TOMsworkspace/BlogHelper@1.0/wp.jpg" alt="wechat"/></a><div class="post-qr-code-desc">wechat</div></li></ul></div></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2021/03/05/C++%E5%8F%82%E6%95%B0%E4%BC%A0%E9%80%92%E6%96%B9%E5%BC%8F%E5%8F%8A%E5%8C%BA%E5%88%AB/"><img class="prev-cover" data-lazy-src="https://cdn.jsdelivr.net/gh/TOMsworkspace/TOMsworkspace.github.io/2021/03/05/C++参数传递方式及区别/figure1.jpg" onerror="onerror=null;src='/img/404.jpg'"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">C++参数传递方式及区别</div></div></a></div><div class="next-post pull-right"><a href="/2021/02/27/GCC%E8%87%AA%E5%B8%A6%E7%9A%84%E4%B8%80%E4%BA%9Bbuiltin%E5%86%85%E5%BB%BA%E5%87%BD%E6%95%B0/"><img class="next-cover" data-lazy-src="https://cdn.jsdelivr.net/gh/TOMsworkspace/TOMsworkspace.github.io/2021/02/27/GCC自带的一些builtin内建函数/figure1.jpg" onerror="onerror=null;src='/img/404.jpg'"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">GCC自带的一些builtin内建函数</div></div></a></div></nav><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="gitalk-container"></div></div></div></div></div><div class="aside_content" id="aside_content"><div class="card-widget card-info"><div class="card-content"><div class="card-info-avatar is-center"><img class="avatar-img" data-lazy-src="https://cdn.jsdelivr.net/gh/TOMsworkspace/BlogHelper@1.0/avator.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/><div class="author-info__name">Tom</div><div class="author-info__description">keep curiously!</div></div><div class="card-info-data"><div class="card-info-data-item is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">38</div></a></div><div class="card-info-data-item is-center"><a href="/tags/"><div class="headline">标签</div><div class="length-num">73</div></a></div><div class="card-info-data-item is-center"><a href="/categories/"><div class="headline">分类</div><div class="length-num">12</div></a></div></div><a class="button--animated" id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/TOMsworkspace"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/TOMsworkspace" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:cqucscw@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div></div><div class="card-widget card-announcement"><div class="card-content"><div class="item-headline"><i class="fas fa-bullhorn card-announcement-animation"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="card-content"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E6%8C%87%E9%92%88%E4%B8%8E%E5%BC%95%E7%94%A8"><span class="toc-number">1.</span> <span class="toc-text">一、指针与引用</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1%E3%80%81%E6%8C%87%E9%92%88"><span class="toc-number">1.1.</span> <span class="toc-text">1、指针</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2%E3%80%81%E5%BC%95%E7%94%A8"><span class="toc-number">1.2.</span> <span class="toc-text">2、引用</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E6%8C%87%E9%92%88%E4%B8%8E%E5%BC%95%E7%94%A8%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-number">2.</span> <span class="toc-text">二、指针与引用的区别</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E6%9C%89%E5%BC%95%E7%94%A8"><span class="toc-number">3.</span> <span class="toc-text">三、为什么要有引用</span></a></li></ol></div></div></div><div class="card-widget card-recent-post"><div class="card-content"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2021/09/27/%E6%B5%81%E4%BD%93%E6%A8%A1%E6%8B%9F%E4%B8%8ESPH%E6%96%B9%E6%B3%95/" title="流体模拟与SPH方法"><img data-lazy-src="https://cdn.jsdelivr.net/gh/TOMsworkspace/TOMsworkspace.github.io/2021/09/27/流体模拟与SPH方法/figure1.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="流体模拟与SPH方法"/></a><div class="content"><a class="title" href="/2021/09/27/%E6%B5%81%E4%BD%93%E6%A8%A1%E6%8B%9F%E4%B8%8ESPH%E6%96%B9%E6%B3%95/" title="流体模拟与SPH方法">流体模拟与SPH方法</a><time datetime="2021-09-27T08:46:17.000Z" title="发表于 2021-09-27 16:46:17">2021-09-27</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/09/11/%E5%BC%B9%E6%80%A7%E6%9C%89%E9%99%90%E5%85%83%E6%96%B9%E6%B3%95/" title="弹性有限元方法"><img data-lazy-src="https://cdn.jsdelivr.net/gh/TOMsworkspace/TOMsworkspace.github.io/2021/09/11/弹性有限元方法/figure1.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="弹性有限元方法"/></a><div class="content"><a class="title" href="/2021/09/11/%E5%BC%B9%E6%80%A7%E6%9C%89%E9%99%90%E5%85%83%E6%96%B9%E6%B3%95/" title="弹性有限元方法">弹性有限元方法</a><time datetime="2021-09-11T09:05:34.000Z" title="发表于 2021-09-11 17:05:34">2021-09-11</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/08/09/%E5%BC%B9%E7%B0%A7%E8%B4%A8%E7%82%B9%E7%B3%BB%E7%BB%9F%E4%B8%8E%E6%97%B6%E9%97%B4%E7%A7%AF%E5%88%86/" title="弹簧质点系统与时间积分"><img data-lazy-src="https://cdn.jsdelivr.net/gh/TOMsworkspace/TOMsworkspace.github.io/2021/08/09/弹簧质点系统与时间积分/figure1.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="弹簧质点系统与时间积分"/></a><div class="content"><a class="title" href="/2021/08/09/%E5%BC%B9%E7%B0%A7%E8%B4%A8%E7%82%B9%E7%B3%BB%E7%BB%9F%E4%B8%8E%E6%97%B6%E9%97%B4%E7%A7%AF%E5%88%86/" title="弹簧质点系统与时间积分">弹簧质点系统与时间积分</a><time datetime="2021-08-09T13:39:12.000Z" title="发表于 2021-08-09 21:39:12">2021-08-09</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/08/08/OpenGL%E5%9D%90%E6%A0%87%E7%B3%BB%E7%BB%9F/" title="OpenGL坐标系统"><img data-lazy-src="https://cdn.jsdelivr.net/gh/TOMsworkspace/TOMsworkspace.github.io/2021/08/08/OpenGL坐标系统/figure1.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="OpenGL坐标系统"/></a><div class="content"><a class="title" href="/2021/08/08/OpenGL%E5%9D%90%E6%A0%87%E7%B3%BB%E7%BB%9F/" title="OpenGL坐标系统">OpenGL坐标系统</a><time datetime="2021-08-08T12:57:28.000Z" title="发表于 2021-08-08 20:57:28">2021-08-08</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/08/06/Doxygen%E8%87%AA%E5%8A%A8%E7%94%9F%E6%88%90%E6%96%87%E6%A1%A3/" title="Doxygen自动生成文档"><img data-lazy-src="https://cdn.jsdelivr.net/gh/TOMsworkspace/TOMsworkspace.github.io/2021/08/06/Doxygen自动生成文档/Doxygen.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Doxygen自动生成文档"/></a><div class="content"><a class="title" href="/2021/08/06/Doxygen%E8%87%AA%E5%8A%A8%E7%94%9F%E6%88%90%E6%96%87%E6%A1%A3/" title="Doxygen自动生成文档">Doxygen自动生成文档</a><time datetime="2021-08-06T13:24:50.000Z" title="发表于 2021-08-06 21:24:50">2021-08-06</time></div></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2019 - 2024 By Tom</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text">Hi, welcome to my <a href="https://TOMsworkspace.github.io/">blog</a>!</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">简</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog"></i></button><button id="chat_btn" type="button" title="rightside.chat_btn"><i class="fas fa-sms"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.jsdelivr.net/npm/medium-zoom/dist/medium-zoom.min.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page/instantpage.min.js" type="module" defer></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload/dist/lazyload.iife.min.js"></script><div class="js-pjax"><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.css"><script src="https://cdn.jsdelivr.net/npm/katex-copytex@latest/dist/katex-copytex.min.js"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/katex-copytex@latest/dist/katex-copytex.min.css"><script>$(function () {
+  $('span.katex-display').wrap('<div class="katex-wrap"></div>')
+})</script><script>function addGitalkSource () {
+  const ele = document.createElement('link')
+  ele.rel = 'stylesheet'
+  ele.href= 'https://cdn.jsdelivr.net/npm/gitalk/dist/gitalk.min.css'
+  document.getElementsByTagName('head')[0].appendChild(ele)
+}
+
+function loadGitalk () {
+  function initGitalk () {
+    var gitalk = new Gitalk({
+      clientID: 'e50742231659674c31e3',
+      clientSecret: '59038139e289bc384e484d341205bbb95a123209',
+      repo: 'TOMsworkspace.github.io',
+      owner: 'TOMsworkspace',
+      admin: ['TOMsworkspace'],
+      id: '84b81093eefbddae546c42185f555c25',
+      language: '-zh-CN# en, zh-CN, zh-TW, es-ES, fr, ru',
+      perPage: 10,
+      distractionFreeMode: false,
+      pagerDirection: 'last',
+      createIssueManually: true,
+      updateCountCallback: commentCount
+    })
+    gitalk.render('gitalk-container')
+  }
+
+  if (typeof Gitalk === 'function') initGitalk()
+  else {
+    addGitalkSource()
+    $.getScript('https://cdn.jsdelivr.net/npm/gitalk@latest/dist/gitalk.min.js', initGitalk)
+  }
+}
+
+function commentCount(n){
+  let isCommentCount = document.querySelector('#post-meta .gitalk-comment-count')
+  if (isCommentCount) {
+    isCommentCount.innerHTML= n
+  }
+}
+
+if ('Gitalk' === 'Gitalk' || !false) {
+  if (false) btf.loadComment(document.getElementById('gitalk-container'), loadGitalk)
+  else loadGitalk()
+} else {
+  function loadOtherComment () {
+    loadGitalk()
+  }
+}</script><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div><script defer="defer" id="fluttering_ribbon" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/canvas-fluttering-ribbon.min.js"></script><script id="click-show-text" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/click-show-text.min.js" async="async" mobile="false"></script><script>(function(){
+  const bp = document.createElement('script');
+  const curProtocol = window.location.protocol.split(':')[0];
+  if (curProtocol === 'https'){
+  bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+  }
+  else{
+  bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+  }
+  bp.dataset.pjax = ''
+  const s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(bp, s);
+})()</script></div></body></html>

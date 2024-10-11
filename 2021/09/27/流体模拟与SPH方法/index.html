@@ -1,0 +1,280 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>流体模拟与SPH方法 | Tom's develop Blog</title><meta name="keywords" content="流体模拟,SPH方法,拉格朗日视角与欧拉视角"><meta name="author" content="Tom"><meta name="copyright" content="Tom"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><meta name="description" content="流体的物理模拟与SPH方法">
+<meta property="og:type" content="article">
+<meta property="og:title" content="流体模拟与SPH方法">
+<meta property="og:url" content="https://tomsworkspace.github.io/2021/09/27/%E6%B5%81%E4%BD%93%E6%A8%A1%E6%8B%9F%E4%B8%8ESPH%E6%96%B9%E6%B3%95/index.html">
+<meta property="og:site_name" content="Tom&#39;s develop Blog">
+<meta property="og:description" content="流体的物理模拟与SPH方法">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/TOMsworkspace/TOMsworkspace.github.io/2021/09/27/流体模拟与SPH方法/figure1.jpg">
+<meta property="article:published_time" content="2021-09-27T08:46:17.000Z">
+<meta property="article:modified_time" content="2024-10-11T18:29:55.335Z">
+<meta property="article:author" content="Tom">
+<meta property="article:tag" content="流体模拟">
+<meta property="article:tag" content="SPH方法">
+<meta property="article:tag" content="拉格朗日视角与欧拉视角">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/TOMsworkspace/TOMsworkspace.github.io/2021/09/27/流体模拟与SPH方法/figure1.jpg"><link rel="shortcut icon" href="https://cdn.jsdelivr.net/gh/TOMsworkspace/BlogHelper@1.0/avatar.png"><link rel="canonical" href="https://tomsworkspace.github.io/2021/09/27/%E6%B5%81%E4%BD%93%E6%A8%A1%E6%8B%9F%E4%B8%8ESPH%E6%96%B9%E6%B3%95/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="preconnect" href="//zz.bdstatic.com"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css"><script>var GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"簡"},
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"limitCount":50,"languages":{"author":"作者: Tom","link":"链接: ","source":"来源: Tom's develop Blog","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},
+  ClickShowText: {"text":"富强,民主,文明,和谐,自由,平等,公正,法治,爱国,敬业,诚信,友善","fontSize":"15px"},
+  lightbox: 'mediumZoom',
+  Snackbar: undefined,
+  justifiedGallery: {
+    js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+    css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isanchor: false
+};
+
+var saveToLocal = {
+  set: function setWithExpiry(key, value, ttl) {
+    const now = new Date()
+    const expiryDay = ttl * 86400000
+    const item = {
+      value: value,
+      expiry: now.getTime() + expiryDay,
+    }
+    localStorage.setItem(key, JSON.stringify(item))
+  },
+
+  get: function getWithExpiry(key) {
+    const itemStr = localStorage.getItem(key)
+
+    if (!itemStr) {
+      return undefined
+    }
+    const item = JSON.parse(itemStr)
+    const now = new Date()
+
+    if (now.getTime() > item.expiry) {
+      localStorage.removeItem(key)
+      return undefined
+    }
+    return item.value
+  }
+}</script><script id="config_change">var GLOBAL_CONFIG_SITE = { 
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2024-10-12 02:29:55'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(function () {  window.activateDarkMode = function () {
+    document.documentElement.setAttribute('data-theme', 'dark')
+    if (document.querySelector('meta[name="theme-color"]') !== null) {
+      document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+    }
+  }
+  window.activateLightMode = function () {
+    document.documentElement.setAttribute('data-theme', 'light')
+   if (document.querySelector('meta[name="theme-color"]') !== null) {
+      document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+    }
+  }
+  const autoChangeMode = 'true'
+  const t = saveToLocal.get('theme')
+  if (autoChangeMode === '1') {
+    const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+    const isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
+    const isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
+    const hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+    if (t === undefined) {
+      if (isLightMode) activateLightMode()
+      else if (isDarkMode) activateDarkMode()
+      else if (isNotSpecified || hasNoSupport) {
+        const now = new Date()
+        const hour = now.getHours()
+        const isNight = hour <= 6 || hour >= 18
+        isNight ? activateDarkMode() : activateLightMode()
+      }
+      window.matchMedia('(prefers-color-scheme: dark)').addListener(function (e) {
+        if (saveToLocal.get('theme') === undefined) {
+          e.matches ? activateDarkMode() : activateLightMode()
+        }
+      })
+    } else if (t === 'light') activateLightMode()
+    else activateDarkMode()
+  } else if (autoChangeMode === '2') {
+    const now = new Date()
+    const hour = now.getHours()
+    const isNight = hour <= 6 || hour >= 18
+    if (t === undefined) isNight ? activateDarkMode() : activateLightMode()
+    else if (t === 'light') activateLightMode()
+    else activateDarkMode()
+  } else {
+    if (t === 'dark') activateDarkMode()
+    else if (t === 'light') activateLightMode()
+  }})()</script><meta name="generator" content="Hexo 5.4.2"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="author-avatar"><img class="avatar-img" data-lazy-src="https://cdn.jsdelivr.net/gh/TOMsworkspace/BlogHelper@1.0/avator.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">文章</div><div class="length-num">38</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">标签</div><div class="length-num">73</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">分类</div><div class="length-num">12</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div></div></div><div id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url(https://cdn.jsdelivr.net/gh/TOMsworkspace/TOMsworkspace.github.io/2021/09/27/流体模拟与SPH方法/figure1.jpg)"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Tom's develop Blog</a></span><span id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div><span class="close" id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></span></span></nav><div id="post-info"><h1 class="post-title">流体模拟与SPH方法</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2021-09-27T08:46:17.000Z" title="发表于 2021-09-27 16:46:17">2021-09-27</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-10-11T18:29:55.335Z" title="更新于 2024-10-12 02:29:55">2024-10-12</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/OpenSourceSummer2021/">OpenSourceSummer2021</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Computer-Graphics/">Computer Graphics</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Physics-engine/">Physics engine</a></span></div><div class="meta-secondline"> <span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">2.1k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>7分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span><span class="post-meta-separator">|</span><span class="post-meta-commentcount"><i class="far fa-comments fa-fw post-meta-icon"></i><span class="post-meta-label">评论数:</span><a href="/2021/09/27/%E6%B5%81%E4%BD%93%E6%A8%A1%E6%8B%9F%E4%B8%8ESPH%E6%96%B9%E6%B3%95/#post-comment"><span class="gitalk-comment-count comment-count"></span></a></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><!--段首缩进
+&emsp;
+-->
+
+<!--图片居中
+<div align = center>
+<img src= "/img/loading.gif" data-lazy-src="fig.PNG" width = "30%", height = "30%" />
+</div>
+-->
+
+<!--多图片并排
+<div align = center>
+<img src= "/img/loading.gif" data-lazy-src="fig1.PNG" width = "30%", height = "30%" /><img src= "/img/loading.gif" data-lazy-src="fig2.PNG" width = "30%", height = "30%" />
+</div>
+-->
+
+<h2 id="流体的物理模拟与SPH方法"><a href="#流体的物理模拟与SPH方法" class="headerlink" title="流体的物理模拟与SPH方法"></a>流体的物理模拟与SPH方法</h2><p>&emsp;在引入有限元之前，先简单介绍相关的物理理论。在后面的部分，使用粗体符号如 $\boldsymbol{x}$ 表示向量或矩阵(张量), 未加粗的符号为标量, 如 $x$。</p>
+<h3 id="1、拉格朗日视角与欧拉视角"><a href="#1、拉格朗日视角与欧拉视角" class="headerlink" title="1、拉格朗日视角与欧拉视角"></a>1、拉格朗日视角与欧拉视角</h3><div align="center">
+<img data-lazy-src="https://cdn.jsdelivr.net/gh/TOMsworkspace/TOMsworkspace.github.io/2021/09/27/流体模拟与SPH方法/figure2.jpg" width="60%" , height="60%" data-src="/img/loading.gif" class="lazyload">
+</div>
+
+<p>&emsp;烟雾、海浪、水滴…，这些司空见怪的自然现象其实有着非常复杂的数学规律，对于流体等连续介质材料的研究，有两种完全不同的视角，分别是欧拉视角和拉格朗日视角。</p>
+<p>&emsp;欧拉视角的坐标系是固定的，如同站在河边观察河水的流动一样，用这种视角分析流体需要建立网格单元,使用网格将流体分成一个个小的“单元”，在这些单元上进行流体的物理模拟，计算相关的物理量等，这种思路与<a href="https://tomsworkspace.github.io/2021/09/11/%E5%BC%B9%E6%80%A7%E6%9C%89%E9%99%90%E5%85%83%E6%96%B9%E6%B3%95/">有限元方法</a>联系了起来。而拉格朗日视角则将流体视为流动的单元，例如将一片羽毛放入风中，那么羽毛的轨迹可以帮我们指示空气的流动规律。</p>
+<p>SPH算法是典型的拉格朗日视角，它的基本原理就是通过粒子模拟来流体的运动规律，然后再通过表面重建算法(Marching Cube)从粒子中生成网格来进行流体渲染。</p>
+<h3 id="2、SPH粒子受力分析"><a href="#2、SPH粒子受力分析" class="headerlink" title="2、SPH粒子受力分析"></a>2、SPH粒子受力分析</h3><p>&emsp;SPH方法将流体看作大量粒子的集合，使用粒子的运动来模拟流体的流动，根据某点周围粒子的数量来计算流体在该点的压强、流速、密度等属性，同时又使用这些信息来更新粒子的运动情况。</p>
+<p>&emsp;SPH算法的基本设想，就是将连续的流体想象成一个个相互作用的微粒，这些例子相互影响，共同形成了复杂的流体运动，对于每个单独的流体微粒，依旧遵循最基本的牛顿第二定律。流体的质量是由流体单元的密度决定的，所以在SPH中一般用密度代替质量来表示力: </p>
+<p>$$ \boldsymbol{F} = \rho \boldsymbol{a} \tag{1}$$</p>
+<p>&emsp;作用在一个粒子上的作用力由三部分组成:</p>
+<p>$$\boldsymbol{F} = \boldsymbol{F}^{external} + \boldsymbol{F}^{pressure} + \boldsymbol{F}^{viscosity}  \tag{2}$$</p>
+<p>&emsp; 其中，$\boldsymbol{F}^{external}$ 是外力，一般就是重力，所以：</p>
+<p>$$\boldsymbol{F}^{external} = \rho \boldsymbol{g}  \tag{3}$$</p>
+<p>&emsp; $\boldsymbol{F}^{pressure}$ 是由流体内部的压力差产生的作用力，数值上等于压力场在这一点的梯度，力的方向有压力高的地方指向压力低的地方，所以：</p>
+<p>$$\boldsymbol{F}^{pressure} = - \boldsymbol{\nabla p}  \tag{4}$$</p>
+<p>&emsp; $\boldsymbol{F}^{viscosity}$ 是由于粒子间的速度差引起的力，设想在流动的液体内部，快速流动的部分会施加类似于剪切力的作用力到速度慢的部分，这个力的大小跟流体的粘度系数 $\mu$ 以及速度差有关，所以：</p>
+<p>$$\boldsymbol{F}^{viscosity} = \mu\boldsymbol{\nabla^{2} u}  \tag{5}$$</p>
+<p>这里的 $\boldsymbol{u}$ 是此处的速度， $\boldsymbol{\nabla^{2}}$ 是拉普拉辛算子，也叫二阶微分算子，有时也可写作 $\boldsymbol{\Delta}$或者$\boldsymbol{\nabla\cdot\nabla}$。</p>
+<p>&emsp;由（1）-（5）,可以得到流体任一点粒子的加速度为:</p>
+<p>$$\boldsymbol{a} = \boldsymbol{a^{external}} + \boldsymbol{a^{pressure}} + \boldsymbol{a^{viscosity}} = \boldsymbol{g} - \frac{\boldsymbol{\nabla p}}{\rho} + \frac{\mu\boldsymbol{\nabla^{2} u}}{\rho} \tag{6}$$</p>
+<p>&emsp;根据这个公式，只要知道了某一点粒子的流体密度以及压强，就可以使用时间积分方法更新粒子的位置和速度了。下面来说流体某一点密度及压强的计算。</p>
+<h3 id="3、光滑核函数"><a href="#3、光滑核函数" class="headerlink" title="3、光滑核函数"></a>3、光滑核函数</h3><p>&emsp;SPH方法将流体看作大量粒子的集合，使用粒子的运动来模拟流体的流动，根据某点周围粒子的数量来计算流体在该点的压强、流速、密度等属性，同时又使用这些信息来更新粒子的运动情况。可以这样理解这个概念，粒子的属性都会“扩散”到周围，我们使用一个函数来加权求和某一点的属性，这个函数要使得随着距离的增加对结果的影响逐渐变小，也就是在累加中的权重变小，这种随着距离而衰减的函数被称为“光滑核”函数，最大影响半径 $h$ 为“光滑核半径”。</p>
+<div align="center">
+<img data-lazy-src="https://cdn.jsdelivr.net/gh/TOMsworkspace/TOMsworkspace.github.io/2021/09/27/流体模拟与SPH方法/figure3.jpg" width="50%" , height="50%" data-src="/img/loading.gif" class="lazyload">
+</div>
+
+<p>&emsp;常用的核函数，比如Cubic soline kernel，高斯核等。</p>
+<p>&emsp;设想流体中某点 $\boldsymbol{x}$（此处不一定有粒子）,在光滑核半径h范围内有数个粒子，位置分别是$\boldsymbol{x_0}$,$\boldsymbol{x_1}$,$\boldsymbol{x_2}$,…,$\boldsymbol{x_j}$，则该处某项属性 A (可以是压强 $p$、流速 $u$、密度 $rho$ 等属性)的累加公式为：</p>
+<p>$$\boldsymbol{A}(x) = \sum_j \boldsymbol{A}_j \frac{m_j}{\rho_j}W(||\boldsymbol{x} - \boldsymbol{x_j}||_2, h) \tag{7}$$</p>
+<p>&emsp;根据（7），某个属性在任意一点的梯度为：</p>
+<p>$$\boldsymbol{\nabla A}(x) = \sum_j \boldsymbol{A}_j \frac{m_j}{\rho_j} \boldsymbol{\nabla_x} W(||\boldsymbol{x} - \boldsymbol{x_j}||_2, h) \tag{8}$$</p>
+<p>&emsp; 某个属性在任意一点的二阶微分为：</p>
+<p>$$\boldsymbol{\nabla^{2} A}(x) = \sum_j \boldsymbol{A}_j \frac{m_j}{\rho_j} \boldsymbol{\nabla^{2}_x} W(||\boldsymbol{x} - \boldsymbol{x_j}||_2, h) \tag{9}$$</p>
+<p>&emsp;这里的 $\boldsymbol{\nabla^{2}_x} W$ 表示核函数在 $\boldsymbol{x}$ 处的二阶微分。</p>
+<h3 id="3、密度"><a href="#3、密度" class="headerlink" title="3、密度"></a>3、密度</h3><p>&emsp;对于任一点的流体，其密度为：</p>
+<p>$$\rho(x) = \sum_j \rho_j \frac{m_j}{\rho_j}W(||\boldsymbol{x} - \boldsymbol{x_j}||_2, h) = \sum_j m_j W(||\boldsymbol{x} - \boldsymbol{x_j}||_2, h) \tag{10}$$</p>
+<h3 id="4、压力"><a href="#4、压力" class="headerlink" title="4、压力"></a>4、压力</h3><p>&emsp;对于任意某个粒子，产生的压强可以这样计算：</p>
+<p>$$p_j = B ((\frac{\rho_j}{\rho_{j0}})^{\gamma} - 1) \tag{11}$$</p>
+<p>&emsp;这里的 $B$ 是体积模量（Bulk module), $\rho$ 是粒子所在点的流体密度，$\gamma (\sim 7)$ 是一个常数。</p>
+<p>&emsp;根据（8）, （6）中的压强产生的加速度部分可表示为：</p>
+<p>$$\boldsymbol{a^{pressure}(x)} = - \frac{\boldsymbol{\nabla p(x)}}{\rho(x)} = - \frac{\boldsymbol{\sum_{j} p_j \frac{m_j}{\rho_j} \boldsymbol{\nabla_x} W(||\boldsymbol{x} - \boldsymbol{x_j}||_2, h)}}{\rho(x)} \tag{12}$$</p>
+<p>&emsp;不过不幸的是，这个公式是“不平衡”的，也就是说，位于不同压强区的两个粒子之间的作用力不等，所以计算中一般使用双方粒子压强的算术平均值代替，任意处由压力产生的作用力的计算公式为：</p>
+<p>$$\boldsymbol{a^{pressure}(x)} =  - \frac{\boldsymbol{\sum_{j} \frac{m_j(p(x) + p_j)}{2 \rho_j} \boldsymbol{\nabla_x} W(||\boldsymbol{x} - \boldsymbol{x_j}||_2, h)}}{\rho(x)} \tag{13}$$</p>
+<h3 id="4、粘度"><a href="#4、粘度" class="headerlink" title="4、粘度"></a>4、粘度</h3><p>&emsp;根据（8）, （7）中由粘度产生的加速度部分可表示为：</p>
+<p>$$\boldsymbol{a^{viscosity}(x)} = \frac{\mu\boldsymbol{\nabla^{2} u(x)}}{\rho(x)} = \frac{\boldsymbol{\sum_{j} \boldsymbol{u_j} \frac{m_j}{\rho_j} \boldsymbol{\nabla^{2}_x} W(||\boldsymbol{x} - \boldsymbol{x_j}||_2, h)}}{\rho(x)} \tag{14}$$</p>
+<p>&emsp;这个公式同样是“不平衡”的，由于速度是粒子间的相对速度，所以把它修正为：</p>
+<p>$$\boldsymbol{a^{viscosity}(x)} = \frac{\boldsymbol{\sum_{j} \boldsymbol{u_j} m_j\frac{u_j - u(x)}{\rho_j} \boldsymbol{\nabla^{2}_x} W(||\boldsymbol{x} - \boldsymbol{x_j}||_2, h)}}{\rho(x)} \tag{15}$$</p>
+<h3 id="5、SPH方法"><a href="#5、SPH方法" class="headerlink" title="5、SPH方法"></a>5、SPH方法</h3><p>&emsp;综上所述，在每次迭代中，SPH的计算步骤为：</p>
+<p>（1）根据公式（10）计算每个粒子处的密度。<br>（2）根据公式（11）计算每个粒子处的压强。<br>（3）根据公式（8）（13），计算所在位置的压强梯度及压强差产生的力的加速度。<br>（4）根据公式（9）（15），计算所在位置的速度二阶微分及速度差产生的力的加速度。<br>（5）根据公式（6），计算每个粒子的加速度。<br>（6）使用<a href="https://tomsworkspace.github.io/2021/08/09/%E5%BC%B9%E7%B0%A7%E8%B4%A8%E7%82%B9%E7%B3%BB%E7%BB%9F%E4%B8%8E%E6%97%B6%E9%97%B4%E7%A7%AF%E5%88%86/">时间积分方法</a>更新粒子速度和位置。如显式欧拉法：  </p>
+<p>$$\boldsymbol v_{t+1} = \boldsymbol v_{t} + ∆t \boldsymbol a$$</p>
+<p>$$\boldsymbol x_{t+1} = \boldsymbol x_{t} + ∆t \boldsymbol v_{t+1}$$</p>
+<p>（7）根据更新后的粒子重建流体表面，渲染出流体。  </p>
+<p>&emsp;具体地，SPH方法有许多变种，比如WCSPH, PCISPH, DFSPH等。都是基于以上的思路，在具体的公式上有一些细微的区别。具体可参考相应的论文。</p>
+<h3 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h3><p><a target="_blank" rel="noopener" href="https://interactivecomputergraphics.github.io/SPH-Tutorial/">https://interactivecomputergraphics.github.io/SPH-Tutorial/</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/liuyunduo/article/details/84098884">https://blog.csdn.net/liuyunduo/article/details/84098884</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_39300235/article/details/100982901">https://blog.csdn.net/qq_39300235/article/details/100982901</a></p>
+<p>WCSPH: M. Becker and M. Teschner (2007). “Weakly compressible SPH for free surface flows”. In:Proceedings of the 2007 ACM SIGGRAPH/Eurographics symposium on Computer animation. Eurographics Association, pp. 209–217.  </p>
+<p>PCISPH: B. Solenthaler and R. Pajarola (2009). “Predictive-corrective incompressible SPH”. In: ACM SIGGRAPH 2009 papers, pp. 1–6.  </p>
+<p>DFSPH: J. Bender, D. Koschier (2015) Divergence-free smoothed particle hydrodynamics[C] //Proceedings of the 14th ACM SIGGRAPH/Eurographics symposium on computer animation. ACM, 2015: 147-155.  </p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">Tom</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://tomsworkspace.github.io/2021/09/27/%E6%B5%81%E4%BD%93%E6%A8%A1%E6%8B%9F%E4%B8%8ESPH%E6%96%B9%E6%B3%95/">https://tomsworkspace.github.io/2021/09/27/%E6%B5%81%E4%BD%93%E6%A8%A1%E6%8B%9F%E4%B8%8ESPH%E6%96%B9%E6%B3%95/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://TOMsworkspace.github.io" target="_blank">Tom's develop Blog</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E6%B5%81%E4%BD%93%E6%A8%A1%E6%8B%9F/">流体模拟</a><a class="post-meta__tags" href="/tags/SPH%E6%96%B9%E6%B3%95/">SPH方法</a><a class="post-meta__tags" href="/tags/%E6%8B%89%E6%A0%BC%E6%9C%97%E6%97%A5%E8%A7%86%E8%A7%92%E4%B8%8E%E6%AC%A7%E6%8B%89%E8%A7%86%E8%A7%92/">拉格朗日视角与欧拉视角</a></div><div class="post_share"><div class="social-share" data-image="https://cdn.jsdelivr.net/gh/TOMsworkspace/TOMsworkspace.github.io/2021/09/27/流体模拟与SPH方法/figure1.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><div class="post-reward"><div class="reward-button"><i class="fas fa-qrcode"></i> 打赏<div class="reward-main"><ul class="reward-all"><li class="reward-item"><a href="https://cdn.jsdelivr.net/gh/TOMsworkspace/BlogHelper@1.0/wp.jpg" target="_blank"><img class="post-qr-code-img" data-lazy-src="https://cdn.jsdelivr.net/gh/TOMsworkspace/BlogHelper@1.0/wp.jpg" alt="wechat"/></a><div class="post-qr-code-desc">wechat</div></li></ul></div></div></div><nav class="pagination-post" id="pagination"><div class="next-post pull-full"><a href="/2021/09/11/%E5%BC%B9%E6%80%A7%E6%9C%89%E9%99%90%E5%85%83%E6%96%B9%E6%B3%95/"><img class="next-cover" data-lazy-src="https://cdn.jsdelivr.net/gh/TOMsworkspace/TOMsworkspace.github.io/2021/09/11/弹性有限元方法/figure1.jpg" onerror="onerror=null;src='/img/404.jpg'"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">弹性有限元方法</div></div></a></div></nav><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="gitalk-container"></div></div></div></div></div><div class="aside_content" id="aside_content"><div class="card-widget card-info"><div class="card-content"><div class="card-info-avatar is-center"><img class="avatar-img" data-lazy-src="https://cdn.jsdelivr.net/gh/TOMsworkspace/BlogHelper@1.0/avator.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/><div class="author-info__name">Tom</div><div class="author-info__description">keep curiously!</div></div><div class="card-info-data"><div class="card-info-data-item is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">38</div></a></div><div class="card-info-data-item is-center"><a href="/tags/"><div class="headline">标签</div><div class="length-num">73</div></a></div><div class="card-info-data-item is-center"><a href="/categories/"><div class="headline">分类</div><div class="length-num">12</div></a></div></div><a class="button--animated" id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/TOMsworkspace"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/TOMsworkspace" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:cqucscw@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div></div><div class="card-widget card-announcement"><div class="card-content"><div class="item-headline"><i class="fas fa-bullhorn card-announcement-animation"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="card-content"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B5%81%E4%BD%93%E7%9A%84%E7%89%A9%E7%90%86%E6%A8%A1%E6%8B%9F%E4%B8%8ESPH%E6%96%B9%E6%B3%95"><span class="toc-number">1.</span> <span class="toc-text">流体的物理模拟与SPH方法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1%E3%80%81%E6%8B%89%E6%A0%BC%E6%9C%97%E6%97%A5%E8%A7%86%E8%A7%92%E4%B8%8E%E6%AC%A7%E6%8B%89%E8%A7%86%E8%A7%92"><span class="toc-number">1.1.</span> <span class="toc-text">1、拉格朗日视角与欧拉视角</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2%E3%80%81SPH%E7%B2%92%E5%AD%90%E5%8F%97%E5%8A%9B%E5%88%86%E6%9E%90"><span class="toc-number">1.2.</span> <span class="toc-text">2、SPH粒子受力分析</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3%E3%80%81%E5%85%89%E6%BB%91%E6%A0%B8%E5%87%BD%E6%95%B0"><span class="toc-number">1.3.</span> <span class="toc-text">3、光滑核函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3%E3%80%81%E5%AF%86%E5%BA%A6"><span class="toc-number">1.4.</span> <span class="toc-text">3、密度</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4%E3%80%81%E5%8E%8B%E5%8A%9B"><span class="toc-number">1.5.</span> <span class="toc-text">4、压力</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4%E3%80%81%E7%B2%98%E5%BA%A6"><span class="toc-number">1.6.</span> <span class="toc-text">4、粘度</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5%E3%80%81SPH%E6%96%B9%E6%B3%95"><span class="toc-number">1.7.</span> <span class="toc-text">5、SPH方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99"><span class="toc-number">1.8.</span> <span class="toc-text">参考资料</span></a></li></ol></li></ol></div></div></div><div class="card-widget card-recent-post"><div class="card-content"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2021/09/27/%E6%B5%81%E4%BD%93%E6%A8%A1%E6%8B%9F%E4%B8%8ESPH%E6%96%B9%E6%B3%95/" title="流体模拟与SPH方法"><img data-lazy-src="https://cdn.jsdelivr.net/gh/TOMsworkspace/TOMsworkspace.github.io/2021/09/27/流体模拟与SPH方法/figure1.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="流体模拟与SPH方法"/></a><div class="content"><a class="title" href="/2021/09/27/%E6%B5%81%E4%BD%93%E6%A8%A1%E6%8B%9F%E4%B8%8ESPH%E6%96%B9%E6%B3%95/" title="流体模拟与SPH方法">流体模拟与SPH方法</a><time datetime="2021-09-27T08:46:17.000Z" title="发表于 2021-09-27 16:46:17">2021-09-27</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/09/11/%E5%BC%B9%E6%80%A7%E6%9C%89%E9%99%90%E5%85%83%E6%96%B9%E6%B3%95/" title="弹性有限元方法"><img data-lazy-src="https://cdn.jsdelivr.net/gh/TOMsworkspace/TOMsworkspace.github.io/2021/09/11/弹性有限元方法/figure1.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="弹性有限元方法"/></a><div class="content"><a class="title" href="/2021/09/11/%E5%BC%B9%E6%80%A7%E6%9C%89%E9%99%90%E5%85%83%E6%96%B9%E6%B3%95/" title="弹性有限元方法">弹性有限元方法</a><time datetime="2021-09-11T09:05:34.000Z" title="发表于 2021-09-11 17:05:34">2021-09-11</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/08/09/%E5%BC%B9%E7%B0%A7%E8%B4%A8%E7%82%B9%E7%B3%BB%E7%BB%9F%E4%B8%8E%E6%97%B6%E9%97%B4%E7%A7%AF%E5%88%86/" title="弹簧质点系统与时间积分"><img data-lazy-src="https://cdn.jsdelivr.net/gh/TOMsworkspace/TOMsworkspace.github.io/2021/08/09/弹簧质点系统与时间积分/figure1.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="弹簧质点系统与时间积分"/></a><div class="content"><a class="title" href="/2021/08/09/%E5%BC%B9%E7%B0%A7%E8%B4%A8%E7%82%B9%E7%B3%BB%E7%BB%9F%E4%B8%8E%E6%97%B6%E9%97%B4%E7%A7%AF%E5%88%86/" title="弹簧质点系统与时间积分">弹簧质点系统与时间积分</a><time datetime="2021-08-09T13:39:12.000Z" title="发表于 2021-08-09 21:39:12">2021-08-09</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/08/08/OpenGL%E5%9D%90%E6%A0%87%E7%B3%BB%E7%BB%9F/" title="OpenGL坐标系统"><img data-lazy-src="https://cdn.jsdelivr.net/gh/TOMsworkspace/TOMsworkspace.github.io/2021/08/08/OpenGL坐标系统/figure1.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="OpenGL坐标系统"/></a><div class="content"><a class="title" href="/2021/08/08/OpenGL%E5%9D%90%E6%A0%87%E7%B3%BB%E7%BB%9F/" title="OpenGL坐标系统">OpenGL坐标系统</a><time datetime="2021-08-08T12:57:28.000Z" title="发表于 2021-08-08 20:57:28">2021-08-08</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2021/08/06/Doxygen%E8%87%AA%E5%8A%A8%E7%94%9F%E6%88%90%E6%96%87%E6%A1%A3/" title="Doxygen自动生成文档"><img data-lazy-src="https://cdn.jsdelivr.net/gh/TOMsworkspace/TOMsworkspace.github.io/2021/08/06/Doxygen自动生成文档/Doxygen.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Doxygen自动生成文档"/></a><div class="content"><a class="title" href="/2021/08/06/Doxygen%E8%87%AA%E5%8A%A8%E7%94%9F%E6%88%90%E6%96%87%E6%A1%A3/" title="Doxygen自动生成文档">Doxygen自动生成文档</a><time datetime="2021-08-06T13:24:50.000Z" title="发表于 2021-08-06 21:24:50">2021-08-06</time></div></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2019 - 2024 By Tom</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text">Hi, welcome to my <a href="https://TOMsworkspace.github.io/">blog</a>!</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">简</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog"></i></button><button id="chat_btn" type="button" title="rightside.chat_btn"><i class="fas fa-sms"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.jsdelivr.net/npm/medium-zoom/dist/medium-zoom.min.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page/instantpage.min.js" type="module" defer></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload/dist/lazyload.iife.min.js"></script><div class="js-pjax"><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.css"><script src="https://cdn.jsdelivr.net/npm/katex-copytex@latest/dist/katex-copytex.min.js"></script><link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/katex-copytex@latest/dist/katex-copytex.min.css"><script>$(function () {
+  $('span.katex-display').wrap('<div class="katex-wrap"></div>')
+})</script><script>function addGitalkSource () {
+  const ele = document.createElement('link')
+  ele.rel = 'stylesheet'
+  ele.href= 'https://cdn.jsdelivr.net/npm/gitalk/dist/gitalk.min.css'
+  document.getElementsByTagName('head')[0].appendChild(ele)
+}
+
+function loadGitalk () {
+  function initGitalk () {
+    var gitalk = new Gitalk({
+      clientID: 'e50742231659674c31e3',
+      clientSecret: '59038139e289bc384e484d341205bbb95a123209',
+      repo: 'TOMsworkspace.github.io',
+      owner: 'TOMsworkspace',
+      admin: ['TOMsworkspace'],
+      id: '425fd3908de21baf7446407430365689',
+      language: '-zh-CN# en, zh-CN, zh-TW, es-ES, fr, ru',
+      perPage: 10,
+      distractionFreeMode: false,
+      pagerDirection: 'last',
+      createIssueManually: true,
+      updateCountCallback: commentCount
+    })
+    gitalk.render('gitalk-container')
+  }
+
+  if (typeof Gitalk === 'function') initGitalk()
+  else {
+    addGitalkSource()
+    $.getScript('https://cdn.jsdelivr.net/npm/gitalk@latest/dist/gitalk.min.js', initGitalk)
+  }
+}
+
+function commentCount(n){
+  let isCommentCount = document.querySelector('#post-meta .gitalk-comment-count')
+  if (isCommentCount) {
+    isCommentCount.innerHTML= n
+  }
+}
+
+if ('Gitalk' === 'Gitalk' || !false) {
+  if (false) btf.loadComment(document.getElementById('gitalk-container'), loadGitalk)
+  else loadGitalk()
+} else {
+  function loadOtherComment () {
+    loadGitalk()
+  }
+}</script><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div><script defer="defer" id="fluttering_ribbon" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/canvas-fluttering-ribbon.min.js"></script><script id="click-show-text" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/click-show-text.min.js" async="async" mobile="false"></script><script>(function(){
+  const bp = document.createElement('script');
+  const curProtocol = window.location.protocol.split(':')[0];
+  if (curProtocol === 'https'){
+  bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+  }
+  else{
+  bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+  }
+  bp.dataset.pjax = ''
+  const s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(bp, s);
+})()</script></div></body></html>
