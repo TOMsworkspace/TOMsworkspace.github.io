@@ -124,7 +124,7 @@ default_cover: https://cdn.jsdelivr.net/gh/TOMsworkspace/BlogHelper@1.0/lanuage.
 
 # the banner image of archive page
 #archive_img: /img/archive.jpg
-archive_img: https://cdn.jsdelivr.net/gh/jerryc127/CDN@latest/Photo/archive.jpg
+#archive_img: https://cdn.jsdelivr.net/gh/jerryc127/CDN@latest/Photo/archive.jpg
 #- https://cdn.jsdelivr.net/gh/jerryc127/CDN@latest/Photo/archive.jpg
 
 # the banner image of tag page
