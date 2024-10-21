@@ -139,64 +139,64 @@ var saveToLocal = {
   } else {
     if (t === 'dark') activateDarkMode()
     else if (t === 'light') activateLightMode()
-  }})()</script><meta name="generator" content="Hexo 5.4.2"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="author-avatar"><img class="avatar-img" data-lazy-src="https://cdn.jsdelivr.net/gh/TOMsworkspace/BlogHelper@1.0/avator.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">文章</div><div class="length-num">38</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">标签</div><div class="length-num">73</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">分类</div><div class="length-num">12</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div></div></div><div id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url(https://cdn.jsdelivr.net/gh/TOMsworkspace/TOMsworkspace.github.io/2021/09/11/弹性有限元方法/figure1.jpg)"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Tom's develop Blog</a></span><span id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div><span class="close" id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></span></span></nav><div id="post-info"><h1 class="post-title">弹性有限元方法</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2021-09-11T09:05:34.000Z" title="发表于 2021-09-11 17:05:34">2021-09-11</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-10-11T18:29:55.334Z" title="更新于 2024-10-12 02:29:55">2024-10-12</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/OpenSourceSummer2021/">OpenSourceSummer2021</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Computer-Graphics/">Computer Graphics</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Physics-engine/">Physics engine</a></span></div><div class="meta-secondline"> <span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">2.2k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>8分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span><span class="post-meta-separator">|</span><span class="post-meta-commentcount"><i class="far fa-comments fa-fw post-meta-icon"></i><span class="post-meta-label">评论数:</span><a href="/2021/09/11/%E5%BC%B9%E6%80%A7%E6%9C%89%E9%99%90%E5%85%83%E6%96%B9%E6%B3%95/#post-comment"><span class="gitalk-comment-count comment-count"></span></a></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h2 id="弹性有限元与超弹性物体模拟方法"><a href="#弹性有限元与超弹性物体模拟方法" class="headerlink" title="弹性有限元与超弹性物体模拟方法"></a>弹性有限元与超弹性物体模拟方法</h2><p>&emsp;在引入有限元之前，先简单介绍相关的物理理论。在后面的部分，使用粗体符号如 $\boldsymbol{x}$ 表示向量或矩阵(张量), 未加粗的符号为标量, 如 $x$。</p>
+  }})()</script><meta name="generator" content="Hexo 5.0.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="author-avatar"><img class="avatar-img" data-lazy-src="https://cdn.jsdelivr.net/gh/TOMsworkspace/BlogHelper@1.0/avator.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">文章</div><div class="length-num">38</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">标签</div><div class="length-num">73</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">分类</div><div class="length-num">12</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div></div></div><div id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url(https://cdn.jsdelivr.net/gh/TOMsworkspace/TOMsworkspace.github.io/2021/09/11/弹性有限元方法/figure1.jpg)"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Tom's develop Blog</a></span><span id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div><span class="close" id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></span></span></nav><div id="post-info"><h1 class="post-title">弹性有限元方法</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2021-09-11T09:05:34.000Z" title="发表于 2021-09-11 17:05:34">2021-09-11</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-10-11T18:29:55.334Z" title="更新于 2024-10-12 02:29:55">2024-10-12</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/OpenSourceSummer2021/">OpenSourceSummer2021</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Computer-Graphics/">Computer Graphics</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Physics-engine/">Physics engine</a></span></div><div class="meta-secondline"> <span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">2.2k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>9分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span><span class="post-meta-separator">|</span><span class="post-meta-commentcount"><i class="far fa-comments fa-fw post-meta-icon"></i><span class="post-meta-label">评论数:</span><a href="/2021/09/11/%E5%BC%B9%E6%80%A7%E6%9C%89%E9%99%90%E5%85%83%E6%96%B9%E6%B3%95/#post-comment"><span class="gitalk-comment-count comment-count"></span></a></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h2 id="弹性有限元与超弹性物体模拟方法"><a href="#弹性有限元与超弹性物体模拟方法" class="headerlink" title="弹性有限元与超弹性物体模拟方法"></a>弹性有限元与超弹性物体模拟方法</h2><p>&emsp;在引入有限元之前，先简单介绍相关的物理理论。在后面的部分，使用粗体符号如 $\boldsymbol{x}$ 表示向量或矩阵(张量), 未加粗的符号为标量, 如 $x$。</p>
 <h3 id="1、形变（Deformation）"><a href="#1、形变（Deformation）" class="headerlink" title="1、形变（Deformation）"></a>1、形变（Deformation）</h3><p>当弹性材料发生形变，其上点$x$会移动到新的位置，我们形变映射(Deformation map) $\boldsymbol \phi$ 表达此关系,它是一个向量到向量的映射。有：</p>
-<p>$$\boldsymbol x_{deformed} = \boldsymbol \phi( \boldsymbol x_{rest})$$</p>
+<p>$$\boldsymbol x_{deformed} &#x3D; \boldsymbol \phi( \boldsymbol x_{rest})$$</p>
 <p>为了更好地描述形变，通常使用形变梯度(deformation gradient)来表示这个形变。形变梯度定义为：</p>
-<p>$$\boldsymbol F = \frac{\partial \boldsymbol \phi( \boldsymbol x_{rest})}{\partial \boldsymbol x_{rest}} = \frac{\boldsymbol x_{deformed}}{\boldsymbol x_{rest}} \tag{1}$$</p>
+<p>$$\boldsymbol F &#x3D; \frac{\partial \boldsymbol \phi( \boldsymbol x_{rest})}{\partial \boldsymbol x_{rest}} &#x3D; \frac{\boldsymbol x_{deformed}}{\boldsymbol x_{rest}} \tag{1}$$</p>
 <p>这里 $\boldsymbol F$是一个n阶张量，2D问题就是一个二阶张量(2 x 2 矩阵)，3D就是一个三阶张量(3 x 3矩阵)。</p>
 <p>$\boldsymbol F$的行列式（通常用$\boldsymbol J$表示）也是非常有用的，因为它的表征无限小体积的变化。它通常表示为:</p>
-<p>$$\boldsymbol J = det(\boldsymbol F) \tag{2}$$</p>
-<p>$\boldsymbol J$表示在无限小体积（面积）相对原始体积（面积）的比率。例如，在刚性运动（旋转和平移）中这很好理解， $\boldsymbol F$是旋转矩阵且$\boldsymbol J = 1$。请注意，单位矩阵也是旋转矩阵。 $\boldsymbol J &gt; 1$表示体积(面积)增加，$\boldsymbol J &lt; 1$表示体积(面积)减小。</p>
-<p>$\boldsymbol J = 0$意味着体积变成0。在真实世界中，这将不会发生。然而，数值上获得这样的$\boldsymbol F$是可能的。在3D中，这表明物质被压缩使其成为一个面或一条线或是一个无体积的点。 $\boldsymbol J &lt; 0$意味着物体被反转。考虑2D中的一个三角形， $\boldsymbol J &lt; 0$意味着某个顶点穿过了它相对的边，然后面积变成了负值。</p>
+<p>$$\boldsymbol J &#x3D; det(\boldsymbol F) \tag{2}$$</p>
+<p>$\boldsymbol J$表示在无限小体积（面积）相对原始体积（面积）的比率。例如，在刚性运动（旋转和平移）中这很好理解， $\boldsymbol F$是旋转矩阵且$\boldsymbol J &#x3D; 1$。请注意，单位矩阵也是旋转矩阵。 $\boldsymbol J &gt; 1$表示体积(面积)增加，$\boldsymbol J &lt; 1$表示体积(面积)减小。</p>
+<p>$\boldsymbol J &#x3D; 0$意味着体积变成0。在真实世界中，这将不会发生。然而，数值上获得这样的$\boldsymbol F$是可能的。在3D中，这表明物质被压缩使其成为一个面或一条线或是一个无体积的点。 $\boldsymbol J &lt; 0$意味着物体被反转。考虑2D中的一个三角形， $\boldsymbol J &lt; 0$意味着某个顶点穿过了它相对的边，然后面积变成了负值。</p>
 <h3 id="2、弹性（Elasticity）"><a href="#2、弹性（Elasticity）" class="headerlink" title="2、弹性（Elasticity）"></a>2、弹性（Elasticity）</h3><h4 id="2-1-应变势能（Strain-energy）与应力（stress）"><a href="#2-1-应变势能（Strain-energy）与应力（stress）" class="headerlink" title="2.1 应变势能（Strain energy）与应力（stress）"></a>2.1 应变势能（Strain energy）与应力（stress）</h4><p>&emsp; 对于超弹性材料,其应力与应变关系由一个应变能量密度函数定义:</p>
-<p>$$\Psi = \Psi(\boldsymbol{F}) \tag{3}$$</p>
+<p>$$\Psi &#x3D; \Psi(\boldsymbol{F}) \tag{3}$$</p>
 <p>直观地理解：$\Psi $ 是惩罚形变的隐函数。这个势函数与物体抵抗形变所产生的力有关，这个力叫应力(stress)，它是材料内部的一种弹性力。而之前 (1) 定义的形变梯度$\boldsymbol F$也叫做应变（strain）。</p>
 <p>知道了势能密度之后，对于一个物体，其总的弹性势能就是：</p>
-<p>$$E = \int_{\Omega} \boldsymbol{\Psi(F)} d \boldsymbol{X} \tag{4}$$</p>
+<p>$$E &#x3D; \int_{\Omega} \boldsymbol{\Psi(F)} d \boldsymbol{X} \tag{4}$$</p>
 <p>因此，物体在任意一点的受力可以通过势能的负梯度来计算：</p>
-<p>$$ \boldsymbol {f(x)} = - \frac{\partial E}{\partial \boldsymbol{x}} \tag{5}$$</p>
+<p>$$ \boldsymbol {f(x)} &#x3D; - \frac{\partial E}{\partial \boldsymbol{x}} \tag{5}$$</p>
 <p>应力代表无限小体积（面积）的材料成分对其附近施加的内力。为了表示应力，定义了不同的度量来表示：</p>
 <ul>
-<li><p>First Piola-Kirchhof(PK1)应力  $\boldsymbol {P(F)} = \frac{\partial \boldsymbol{\Psi}( \boldsymbol{F})}{\partial \boldsymbol{F}} $ </p>
+<li><p>First Piola-Kirchhof(PK1)应力  $\boldsymbol {P(F)} &#x3D; \frac{\partial \boldsymbol{\Psi}( \boldsymbol{F})}{\partial \boldsymbol{F}} $ </p>
 </li>
 <li><p>Kirchhoff 应力： $\boldsymbol \tau$  </p>
 </li>
-<li><p>柯西（cauchy）应力:  $\boldsymbol \sigma$  </p>
+<li><p>柯西（cauchy）应力:  $\boldsymbol \sigma$</p>
 </li>
 </ul>
-<p>三种应力都是一个张量，维度与应变 $\boldsymbol F$ 一样。三种应变可以相互转化：<br>$$\boldsymbol \tau =  J\boldsymbol \sigma = \boldsymbol{PF}^{T}, \boldsymbol P = J \boldsymbol {\sigma F}^{-T} \tag{6}$$</p>
+<p>三种应力都是一个张量，维度与应变 $\boldsymbol F$ 一样。三种应变可以相互转化：<br>$$\boldsymbol \tau &#x3D;  J\boldsymbol \sigma &#x3D; \boldsymbol{PF}^{T}, \boldsymbol P &#x3D; J \boldsymbol {\sigma F}^{-T} \tag{6}$$</p>
 <p>&emsp; 图形学模拟里一般常用PK1应力与柯西应力。</p>
 <h4 id="2-2-弹性模量（Elastic-moduli）"><a href="#2-2-弹性模量（Elastic-moduli）" class="headerlink" title="2.2 弹性模量（Elastic moduli）"></a>2.2 弹性模量（Elastic moduli）</h4><p>&emsp; 物理模拟中，常常使用各向同性模型，指的沿物体任意一个方向施加形变，沿该方向对抗该形变的力都是一样的。为了描述各向同性物体的弹性，引入弹性模量来度量弹性，有以下几种：</p>
 <ul>
-<li><p>Young’s modulus $E = \frac{\sigma}{\varepsilon}$  </p>
+<li><p>Young’s modulus $E &#x3D; \frac{\sigma}{\varepsilon}$  </p>
 </li>
-<li><p>Bulk modulus $K = - V \frac{dP}{dV}$  </p>
+<li><p>Bulk modulus $K &#x3D; - V \frac{dP}{dV}$  </p>
 </li>
 <li><p>Poisson’s ratio $\nu \in [0 , 0.5]$  </p>
 </li>
 <li><p>Lam$\acute{e}$’s first parameter $\mu$  </p>
 </li>
-<li><p>Lam$\acute{e}$’s second parameter $\lambda$  </p>
+<li><p>Lam$\acute{e}$’s second parameter $\lambda$</p>
 </li>
 </ul>
 <p>他们之间也可以相互转化, </p>
-<p>$$K = \frac{E}{3(1 - 2\nu)},  \lambda = \frac{E\nu}{(1 + \nu)(1 - 2\nu)},  \mu = \frac{E}{2(1 + \nu)} \tag{7}$$</p>
+<p>$$K &#x3D; \frac{E}{3(1 - 2\nu)},  \lambda &#x3D; \frac{E\nu}{(1 + \nu)(1 - 2\nu)},  \mu &#x3D; \frac{E}{2(1 + \nu)} \tag{7}$$</p>
 <p>&emsp; 图形学模拟里一般常常设定 $E$ 与 $\nu$ 的值, 其他值通过这两个算出来。</p>
 <h4 id="2-3-超弹性材料模型"><a href="#2-3-超弹性材料模型" class="headerlink" title="2.3 超弹性材料模型"></a>2.3 超弹性材料模型</h4><p>&emsp; 图形学里常常使用一个确定的函数来描述弹性势能与应变间的关系，进而将应变与应力联系起来。一般常用的线性弹性模型有：</p>
 <p>（1）Neo-Hookean模型</p>
-<p>$$\boldsymbol{\Psi}( \boldsymbol{F}) = \frac{\mu}{2}\sum_{i}[(\boldsymbol{FF^{T}})_{ii}-1]-\mu log(J) + \frac{\lambda}{2}log^{2}(J) \tag{8}$$</p>
-<p>$$\boldsymbol{P}( \boldsymbol{F}) = \frac{\partial \Psi}{\partial \boldsymbol F} = \mu(\boldsymbol {F-F^{T}}) + \lambda log(J) \boldsymbol{F^{-T}} \tag{9}$$</p>
+<p>$$\boldsymbol{\Psi}( \boldsymbol{F}) &#x3D; \frac{\mu}{2}\sum_{i}[(\boldsymbol{FF^{T}})_{ii}-1]-\mu log(J) + \frac{\lambda}{2}log^{2}(J) \tag{8}$$</p>
+<p>$$\boldsymbol{P}( \boldsymbol{F}) &#x3D; \frac{\partial \Psi}{\partial \boldsymbol F} &#x3D; \mu(\boldsymbol {F-F^{T}}) + \lambda log(J) \boldsymbol{F^{-T}} \tag{9}$$</p>
 <p>（2） (Fixed) Corotated模型</p>
-<p>$$\boldsymbol{\Psi}( \boldsymbol{F}) = \mu \sum_{i}(\boldsymbol{\sigma_{i}-1})^{2}- \frac{\lambda}{2}(J - 1)^{2} \tag{10}$$</p>
-<p>$$\boldsymbol{P}( \boldsymbol{F}) = \frac{\partial \Psi}{\partial \boldsymbol F} = 2\mu(\boldsymbol {F-R}) + \lambda (J - 1)J\boldsymbol{F^{-T}} \tag{11}$$</p>
-<p>&emsp;公式（10）里的 $\sigma_{i}$ 是应变 $\boldsymbol F$的奇异值。公式（11)里的 $R$ 是 $F$ 进行极分解 $\boldsymbol {F = RS}$ 后得到的。</p>
+<p>$$\boldsymbol{\Psi}( \boldsymbol{F}) &#x3D; \mu \sum_{i}(\boldsymbol{\sigma_{i}-1})^{2}- \frac{\lambda}{2}(J - 1)^{2} \tag{10}$$</p>
+<p>$$\boldsymbol{P}( \boldsymbol{F}) &#x3D; \frac{\partial \Psi}{\partial \boldsymbol F} &#x3D; 2\mu(\boldsymbol {F-R}) + \lambda (J - 1)J\boldsymbol{F^{-T}} \tag{11}$$</p>
+<p>&emsp;公式（10）里的 $\sigma_{i}$ 是应变 $\boldsymbol F$的奇异值。公式（11)里的 $R$ 是 $F$ 进行极分解 $\boldsymbol {F &#x3D; RS}$ 后得到的。</p>
 <h3 id="3、线性有限元方法（Linear-finite-element-method"><a href="#3、线性有限元方法（Linear-finite-element-method" class="headerlink" title="3、线性有限元方法（Linear finite element method)"></a>3、线性有限元方法（Linear finite element method)</h3><p>&emsp; 有限元方法是一种 Galerkin 离散化方法，使用连续偏微分方程的弱形式来构建离散方程。直观地讲，就是讲一个连续的物体或表面划分为一个个微元，也就是element,在一个个微元上根据物理性质来构建方程逼近连续的求解结果。</p>
 <p>&emsp;在物理模拟中，常常使用三角形（2D）或四面体（3D）来作为相应的有限元element。</p>
 <p>&emsp;引入有限元之后，公式（4）可以重写成：</p>
-<p>$$E = \sum_{e}E^{e}(x) = \sum_{e}  \int_{\Omega_{e}} \boldsymbol{\Psi(F)} d \boldsymbol{X} = \sum_{e} V_{e} \boldsymbol{\Psi(F_{e})} \tag{12}$$</p>
+<p>$$E &#x3D; \sum_{e}E^{e}(x) &#x3D; \sum_{e}  \int_{\Omega_{e}} \boldsymbol{\Psi(F)} d \boldsymbol{X} &#x3D; \sum_{e} V_{e} \boldsymbol{\Psi(F_{e})} \tag{12}$$</p>
 <p>&emsp;相应地，每个微元上的点受力可以写成：</p>
-<p>$$ \boldsymbol {f(x)} = - \frac{\partial E(x)}{\partial \boldsymbol{x}}<br>= - \sum_{e} \frac{\partial E^{e}(x)}{\partial \boldsymbol{x}}<br>= - \sum_{e} V_{e}\frac{\partial \boldsymbol\Psi(\boldsymbol F_{e})}{\partial {\boldsymbol F_{e}}} \frac{\partial \boldsymbol F_{e}}{\partial {\boldsymbol x}}<br>= - \sum_{e} V_{e} \boldsymbol P(\boldsymbol F_{e}) \frac{\partial \boldsymbol F_{e}}{\partial {\boldsymbol x}} \tag{13}$$</p>
+<p>$$ \boldsymbol {f(x)} &#x3D; - \frac{\partial E(x)}{\partial \boldsymbol{x}}<br>&#x3D; - \sum_{e} \frac{\partial E^{e}(x)}{\partial \boldsymbol{x}}<br>&#x3D; - \sum_{e} V_{e}\frac{\partial \boldsymbol\Psi(\boldsymbol F_{e})}{\partial {\boldsymbol F_{e}}} \frac{\partial \boldsymbol F_{e}}{\partial {\boldsymbol x}}<br>&#x3D; - \sum_{e} V_{e} \boldsymbol P(\boldsymbol F_{e}) \frac{\partial \boldsymbol F_{e}}{\partial {\boldsymbol x}} \tag{13}$$</p>
 <h4 id="3-1-四面体有限元与三角形有限元"><a href="#3-1-四面体有限元与三角形有限元" class="headerlink" title="3.1 四面体有限元与三角形有限元"></a>3.1 四面体有限元与三角形有限元</h4><p>&emsp;线性有限元（用于弹性）假设形变映射是仿射的，因此变形梯度 $\boldsymbol F$ 在单个element内是常量。</p>
 <p><img data-lazy-src="https://cdn.jsdelivr.net/gh/TOMsworkspace/TOMsworkspace.github.io/2021/09/11/%E5%BC%B9%E6%80%A7%E6%9C%89%E9%99%90%E5%85%83%E6%96%B9%E6%B3%95/figure2.jpg" alt="tetrahedron" data-src="/img/loading.gif" class="lazyload">  </p>
 <p>&emsp;对于四面体微元，有</p>
@@ -206,15 +206,15 @@ var saveToLocal = {
 </div>
 
 <p>表示成</p>
-<p>$$\boldsymbol D_{S}= \boldsymbol F \boldsymbol D_{m} \tag{14}$$ </p>
-<p>其中 $\boldsymbol D_{s} = \left[<br>\begin{matrix}<br>\boldsymbol x_{1} - \boldsymbol x_{4} &amp; \boldsymbol x_{2} - \boldsymbol x_{4} &amp; \boldsymbol x_{3} - \boldsymbol x_{4}<br>\end{matrix}<br>\right]$ 被称为deformed shape矩阵,  $\boldsymbol D_{m} = \left[<br>\begin{matrix}<br>\boldsymbol X_{1} - \boldsymbol X_{4} &amp; \boldsymbol X_{2} - \boldsymbol X_{4} &amp; \boldsymbol X_{3} - \boldsymbol X_{4}<br>\end{matrix}<br>\right]$ 被称为reference shape矩阵。它是一个常数矩阵，只与初始状态有关。</p>
+<p>$$\boldsymbol D_{S}&#x3D; \boldsymbol F \boldsymbol D_{m} \tag{14}$$ </p>
+<p>其中 $\boldsymbol D_{s} &#x3D; \left[<br>\begin{matrix}<br>\boldsymbol x_{1} - \boldsymbol x_{4} &amp; \boldsymbol x_{2} - \boldsymbol x_{4} &amp; \boldsymbol x_{3} - \boldsymbol x_{4}<br>\end{matrix}<br>\right]$ 被称为deformed shape矩阵,  $\boldsymbol D_{m} &#x3D; \left[<br>\begin{matrix}<br>\boldsymbol X_{1} - \boldsymbol X_{4} &amp; \boldsymbol X_{2} - \boldsymbol X_{4} &amp; \boldsymbol X_{3} - \boldsymbol X_{4}<br>\end{matrix}<br>\right]$ 被称为reference shape矩阵。它是一个常数矩阵，只与初始状态有关。</p>
 <p>四面体的体积可以计算为：</p>
-<p>$$V_{e} = \frac{1}{6}|det(\boldsymbol D_{m})| \tag{15}$$</p>
+<p>$$V_{e} &#x3D; \frac{1}{6}|det(\boldsymbol D_{m})| \tag{15}$$</p>
 <p>由$\boldsymbol D_{m}$ 可逆， 可以求出形变梯度 $\boldsymbol F$ :</p>
-<p>$$\boldsymbol F = \boldsymbol D_{s} \boldsymbol D_{m}^{-1} \tag{16}$$ </p>
+<p>$$\boldsymbol F &#x3D; \boldsymbol D_{s} \boldsymbol D_{m}^{-1} \tag{16}$$ </p>
 <p>为了计算四面体每个顶点的受力，需要计算 $\frac{\partial \boldsymbol F_{e}}{\partial {\boldsymbol x}}$， 这里直接给出受力的计算结果。<a target="_blank" rel="noopener" href="http://www.femdefo.org/">具体推导</a>看这里。</p>
-<p>$$\boldsymbol H = [\boldsymbol f_{i}, \boldsymbol f_{2}, \boldsymbol f_{3}] = -V_{e} \boldsymbol P(\boldsymbol F) \boldsymbol D_{m}^{-T} \tag{17}$$ </p>
-<p>这里的 $\boldsymbol P(\boldsymbol F)$ 可以直接使用公式（9）或（11）的结果。$\boldsymbol H$分别是1，2，3三个顶点的受力，另一个顶点4的受力为 $\boldsymbol f_{4} = - \boldsymbol f_{1} - \boldsymbol f_{2} - \boldsymbol f_{3}$ 。</p>
+<p>$$\boldsymbol H &#x3D; [\boldsymbol f_{i}, \boldsymbol f_{2}, \boldsymbol f_{3}] &#x3D; -V_{e} \boldsymbol P(\boldsymbol F) \boldsymbol D_{m}^{-T} \tag{17}$$ </p>
+<p>这里的 $\boldsymbol P(\boldsymbol F)$ 可以直接使用公式（9）或（11）的结果。$\boldsymbol H$分别是1，2，3三个顶点的受力，另一个顶点4的受力为 $\boldsymbol f_{4} &#x3D; - \boldsymbol f_{1} - \boldsymbol f_{2} - \boldsymbol f_{3}$ 。</p>
 <p>&emsp;基于之上的讨论，一个可以用于计算四面体有限元弹性力的伪代码流程如下：</p>
 <div align="center">
 
@@ -223,11 +223,11 @@ var saveToLocal = {
 
 <p>&emsp;对于三角形网格，其推导是类似的，只是少了一个维度。</p>
 <h4 id="3-2-显式时间积分"><a href="#3-2-显式时间积分" class="headerlink" title="3.2 显式时间积分"></a>3.2 显式时间积分</h4><p>&emsp;基于上一节的讨论，已经得到了计算每个每个顶点上的受力。使用半隐式欧拉迭代方法更新点的位置和速度。</p>
-<p>$$\boldsymbol v_{t+1,i} = \boldsymbol v_{t,i} + \Delta t \frac{\boldsymbol f_{t,i} }{m_{i}} \tag{18}$$</p>
-<p>$$\boldsymbol x_{t+1,i} = \boldsymbol x_{t,i} + \Delta t  \boldsymbol v_{t+1,i}\tag{19}$$</p>
+<p>$$\boldsymbol v_{t+1,i} &#x3D; \boldsymbol v_{t,i} + \Delta t \frac{\boldsymbol f_{t,i} }{m_{i}} \tag{18}$$</p>
+<p>$$\boldsymbol x_{t+1,i} &#x3D; \boldsymbol x_{t,i} + \Delta t  \boldsymbol v_{t+1,i}\tag{19}$$</p>
 <h4 id="3-3-隐式时间积分"><a href="#3-3-隐式时间积分" class="headerlink" title="3.3 隐式时间积分"></a>3.3 隐式时间积分</h4><p>&emsp;隐式时间积分的更新迭代如下：</p>
-<p>$$[\boldsymbol I - \Delta t^{2}\boldsymbol M ^{-1}\frac{\partial \boldsymbol f}{\partial \boldsymbol x}(\boldsymbol x_{t})]\boldsymbol v_{t+1} = \boldsymbol v_{t} + \Delta t \boldsymbol M^{-1}\boldsymbol f(\boldsymbol x_{t}) \tag{20}$$</p>
-<p>这还需要计算力的导数 $\frac{\partial \boldsymbol f}{\partial \boldsymbol x}$, $-\frac{\partial \boldsymbol f}{\partial \boldsymbol x}$被称为stiffness matrix，在实际迭代求解中我们并不用真的构建这个矩阵，我们只需要知道它和某个向量 $ \boldsymbol w$ 的乘积结果即可进行迭代。下面的算法是力的微分$\delta \boldsymbol f = \frac{\partial \boldsymbol f}{\partial \boldsymbol x} \delta \boldsymbol x$的计算方式：</p>
+<p>$$[\boldsymbol I - \Delta t^{2}\boldsymbol M ^{-1}\frac{\partial \boldsymbol f}{\partial \boldsymbol x}(\boldsymbol x_{t})]\boldsymbol v_{t+1} &#x3D; \boldsymbol v_{t} + \Delta t \boldsymbol M^{-1}\boldsymbol f(\boldsymbol x_{t}) \tag{20}$$</p>
+<p>这还需要计算力的导数 $\frac{\partial \boldsymbol f}{\partial \boldsymbol x}$, $-\frac{\partial \boldsymbol f}{\partial \boldsymbol x}$被称为stiffness matrix，在实际迭代求解中我们并不用真的构建这个矩阵，我们只需要知道它和某个向量 $ \boldsymbol w$ 的乘积结果即可进行迭代。下面的算法是力的微分$\delta \boldsymbol f &#x3D; \frac{\partial \boldsymbol f}{\partial \boldsymbol x} \delta \boldsymbol x$的计算方式：</p>
 <div align="center">
 
 <p><img data-lazy-src="https://cdn.jsdelivr.net/gh/TOMsworkspace/TOMsworkspace.github.io/2021/09/11/%E5%BC%B9%E6%80%A7%E6%9C%89%E9%99%90%E5%85%83%E6%96%B9%E6%B3%95/figure5.jpg" alt="tetrahedron" data-src="/img/loading.gif" class="lazyload">  </p>
@@ -297,4 +297,22 @@ if ('Gitalk' === 'Gitalk' || !false) {
   bp.dataset.pjax = ''
   const s = document.getElementsByTagName("script")[0];
   s.parentNode.insertBefore(bp, s);
-})()</script></div></body></html>
+})()</script></div>
+<!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<!-- End: Injected MathJax -->
+</body></html>
